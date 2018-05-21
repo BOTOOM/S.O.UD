@@ -1,7 +1,10 @@
 //alert (":v")
-function LinkedList() {
-    var Node = function(element){
-        this.element = element;
+function SuperCola() {
+    var Node = function(id, nombre, Time){
+        this.id= id;
+        this.nombre = nombre;
+        this.Time= Time;
+        this.quantum=0;
         this.next = null;
     };
 
@@ -9,16 +12,16 @@ function LinkedList() {
     var headNode = null;
 
     this.add = add;
-    this.insert = insert;
-    this.remove = remove;
     this.removeFrom = removeFrom;
     this.indexOf = indexOf;
     this.hasElements = hasElements;
     this.size = size;
     this.toString = toString;
+    this.headNode=headNode;
+    this.ejecucion=ejecucion;
 
-    function add(element) {
-        var node = new Node(element);
+    function add(id, nombre, Time) {
+        var node = new Node(id, nombre, Time);
         var currentNode;
 
         // Verificamos si es el primer nodo en la lista
@@ -38,42 +41,6 @@ function LinkedList() {
 
         // Incrementamos el tamaño de la lista
         listSize++;
-    }
-
-    function insert(element, pos) {
-        // Verificamos que la posición exista
-        if (pos > -1 && pos < listSize) {
-            var node = new Node(element);
-            var currentNode = headNode;
-            var previousNode;
-            var index = 0;
-
-            // Primer elemento
-            if (pos === 0) {
-                node.next = currentNode;
-                headNode = node;
-            } else {
-                while (index++ < pos) {
-                    previousNode = currentNode;
-                    currentNode = currentNode.next;
-                }
-
-                node.next = currentNode;
-                previousNode.next = node;
-            }
-
-            listSize++;
-
-            return true;
-        }
-
-        return false;
-    }
-
-    function remove(element) {
-        var index = this.indexOf(element);
-
-        return this.removeFrom(index);
     }
 
     function removeFrom(pos) {
@@ -139,25 +106,56 @@ function LinkedList() {
         var str = '|';
 
         while (currentNode) {
-            str += currentNode.element + '|';
+            str += currentNode.nombre + '|';
             currentNode = currentNode.next;
         }
 
         return str;
     }
+
+    function ejecucion(){
+        var currentNode = headNode;
+        var n=0;
+        setInterval(function () {
+          if(n<currentNode.Time){
+            console.log("nombre del proceso : ", currentNode.nombre, n);
+            n++
+          }
+        },1000);
+
+    }
+
+
 }
 
-var linkedList = new LinkedList();
 
-console.log('¿Tiene elementos?', linkedList.hasElements());
-linkedList.add(12);
-linkedList.add(99);
-linkedList.add(37);
-console.log('Tamaño de la lista', linkedList.size());
-console.log('Imprime los elementos', linkedList.toString());
-console.log('Obten la posición', linkedList.indexOf(99));
-linkedList.remove(99);
-console.log('Nuevo tamaño de la lista', linkedList.size());
-console.log('Imprime los elementos', linkedList.toString());
-console.log('Insertamos el 100 en la posición 1', linkedList.insert(100, 1));
-console.log('Imprime los elementos', linkedList.toString());
+//-------------------------------------------------------------------------------
+
+
+
+
+var ZonaCritica= new SuperCola();
+var Listo= new SuperCola();
+var Suspendido= new SuperCola();
+var Bloqueado = new SuperCola();
+ZonaCritica.add(01,"proceso 1",10)
+console.log('Imprime los elementos', ZonaCritica.toString());
+
+ZonaCritica.ejecucion();
+
+//ejecucion(ZonaCritica.headNode);
+
+
+/*
+var ZonaCritica = new ZonaCritica();
+
+console.log('¿Tiene elementos?', ZonaCritica.hasElements());
+ZonaCritica.add(01,"proceso1",100);
+ZonaCritica.add(02,"proceso2",50);
+ZonaCritica.add(03,"proceso3",200)
+console.log("tamaño cola", ZonaCritica.size());
+console.log('Imprime los elementos', ZonaCritica.toString());
+ZonaCritica.removeFrom(0);
+console.log("tamaño cola", ZonaCritica.size());
+console.log('Imprime los elementos', ZonaCritica.toString());
+*/
