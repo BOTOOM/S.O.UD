@@ -129,7 +129,7 @@ function create() {
         starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
     }
 	//var starRoja = stars.create(100,300,'starR');
-	var starVerde = starsVerdes.create(200,300,'starG');
+	//var starVerde = starsVerdes.create(200,300,'starG');
 
     //  The score
     scoreText = game.add.text(16, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#000' });
@@ -150,9 +150,9 @@ function create() {
 function update() {
 
 	//variables y función que permite pausar y darle play al juego//
-	pauseButton = this.game.add.sprite(10, 10, 'pauseButton');
+pauseButton = this.game.add.sprite(10, 10, 'pauseButton');
 	pauseButton.inputEnabled = true;
-	pauseButton.events.onInputUp.add(function () {this.game.paused = true;},this);
+	pauseButton.events.onInputUp.add(function () {this.game.paused = true;var starVerde = starsVerdes.create(200,300,'starG');},this);
 	game.input.onDown.add(function () {if(this.game.paused)this.game.paused = false;},this);
 	pauseButton.fixedToCamera = true;
 
