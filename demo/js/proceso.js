@@ -15,7 +15,7 @@ var procesador2 = new Procesador();
 var procesador3 = new Procesador();
 //Contadores para cada procesador
 var contador1=0, contador2=0, contador3=0;
-
+/*
 //Creación de procesos
 $(document).ready(function(){
 	$("#guardarProceso").click(function(){
@@ -23,7 +23,7 @@ $(document).ready(function(){
 		var tiempoProceso = $("#tiempo").val();
 		var recurso = $("#combRecursos").val();
 		var numProcesador = $("#escogerProcesador").val();
-		
+
 		if (numProcesador == "1") {
 			var proceso = new nodoProceso(contador1, nomProceso, tiempoProceso, recurso);
 			procesador1.CrearProceso(proceso);
@@ -47,7 +47,7 @@ $(document).ready(function(){
 	  		this.reset();
 		});
 	});
-});
+});*/
 //Funcion para dibujar la cola
 function dibujarCola(cola){
 	var colaAux = new Cola();

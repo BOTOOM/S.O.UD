@@ -30,7 +30,7 @@ function liberarRecurso(){
 //Crear un recurso desde el formulario
 function crearRecurso(){
 	var nombreRecurso = $("#nombreRecurso").val();
-	recursoCreado = new recurso(nombreRecurso, 1/*, cantidadRecurso*);
+	recursoCreado = new recurso(nombreRecurso, 1/*, cantidadRecurso*/);
 	arregloRecursos.push(recursoCreado);
 	actualizarRecurso();
 	console.log(arregloRecursos.toString());

@@ -1,17 +1,58 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="UTF-8" />
-    <title>Phaser - Making your first game, part 9</title>
+    <title>RR Collect</title>
+			<meta name="author" content="Edwar Diaz/Lizeth Patiño" />
+			<link rel="icon" type="image/png" href="assets/star.png" />
 	<script type="text/javascript" src="js/phaser.min.js"></script>
 	<script type="text/javascript" src="js/juego.js"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
-    </style>
+	<script type="text/javascript" src="js/cola.js"></script>
+	<script type="text/javascript" src="js/recursos.js"></script>
+	<script type="text/javascript" src="js/procesador.js"></script>
+	<script type="text/javascript" src="js/proceso.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
 </head>
 <body>
+
+
+	<div class="procesador">
+		<h2><p class=" text-center Times New Roman">Frabica Azul</p></h2>
+		<div id="container4">
+				<div id="container3">
+					<div id="container2">
+						<div id="container1">
+							<div class="Times New Roman" id="col1">Listos</div>
+							<div class="Times New Roman" id="col2">Bloqueados</div>
+							<div class="Times New Roman" id="col3">Suspendidos</div>
+							<div class="Times New Roman" id="col4">Terminados</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- Listos -->
+		<div class="cola" style="overflow: auto;">
+			<table class="table table-striped" id="listos1">
+			</table>
+			</div>
+		<!-- Bloqueados -->
+		<div class="cola1" style="overflow: auto;">
+			<table class="table table-striped" id="bloqueados1">
+			</table>
+			</div>
+		<!-- suspendidos -->
+		<div class="cola2" style="overflow: auto;">
+			<table class="table table-striped" id="suspendidos1">
+			</table>
+		</div>
+		<!-- terminados -->
+		<div class="cola3" style="overflow: auto;">
+			<table class="table table-striped" id="terminados1">
+			</table>
+		</div>
+	</div>
 
 
 </body>

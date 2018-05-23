@@ -1,6 +1,7 @@
 var hilo1, hilo2, hilo3;
 
 /* --------------Main--------------------- */
+/*
 $(document).ready(function(){
 	//Botón Ejecutar
 	$("#ejecutar").click(function(){
@@ -8,14 +9,14 @@ $(document).ready(function(){
 		$("#interrumpir").attr("disabled",false);
 		ejecutarhilos();
 	});
-	
+
 	//Botón Pausa
 	$("#pausar").click(function(){
 		$("#interrumpir").attr("disabled",true);
 		$("#ejecutar").attr("disabled",false);
 		pausarProcesadores();
 	});
-	
+
 	//Botón Interrumpir
 	$("#interrumpir").click(function(){
 		$("#interrumpir").attr("disabled",true);
@@ -30,25 +31,25 @@ $(document).ready(function(){
 	$("#rendimiento1").click(function(){
 		procesador1.CalcularRendimiento();
 		$("#metrica1").html(dibujarRendiminetos(procesador1.rendimientoProcesos));
-		
+
 	});
 	//Botón rendimiento metrica 2
 	$("#rendimiento2").click(function(){
 		procesador2.CalcularRendimiento();
 		$("#metrica2").html(dibujarRendiminetos(procesador2.rendimientoProcesos));
-		
+
 	});
 	//Botón rendimiento metrica 3
 	$("#rendimiento3").click(function(){
 		procesador3.CalcularRendimiento();
 		$("#metrica3").html(dibujarRendiminetos(procesador3.rendimientoProcesos));
-		
+
 	});
 
-});
+});*/
 //Ejecutar los hilos para el manejo de procesadores
 function ejecutarhilos(){
-	hilo1 = setInterval(function(){	
+	hilo1 = setInterval(function(){
 			procesador1.CorrerProcesador(arregloRecursos);
 			$("#listos1").html(dibujarCola(procesador1.listos));
 			$("#suspendidos1").html(dibujarCola(procesador1.suspendidos));
@@ -85,7 +86,7 @@ function ejecutarhilos(){
 			pintarGantt(procesador3.estados,"#dGantt3");
 		},2000);
 }
-//Detener los procesadores 
+//Detener los procesadores
 function detenerProcesador1(){
 	procesador1.DetenerProcesador(arregloRecursos);
 	clearInterval(hilo1);
@@ -114,7 +115,7 @@ function detenerProcesador3(){
 	$("#bloqueados3").html(dibujarCola(procesador3.bloqueados));
 	$("#terminados3").html(dibujarCola(procesador3.terminados));
 	$("#cpu3").html(dibujarCola(procesador3.CPU));
-	
+
 }
 
 function pausarProcesadores () {

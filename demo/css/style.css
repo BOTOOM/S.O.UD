@@ -1,0 +1,82 @@
+.Times New Roman{
+	font-family:'Lobster', cursive; ;
+}
+
+.procesador {
+  float: left;
+  position: absolute;
+  overflow: hidden;
+  width: 558px;
+  height: 285px;
+  top:  0px;
+  left: 810px;
+}
+
+#CanvasGame{
+  position: absolute;
+  top:  0px;
+  left: 0px;
+}
+
+.cola3{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#FFFFFF;
+}
+.cola2{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#F78181;
+}
+.cola1{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#FFFFFF;
+}
+
+.cola{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#F78181;
+}
+
+#col1 {
+	float:left;
+	width:21%;
+	position:relative;
+	left:1%;
+	overflow:hidden;
+}
+#col2 {
+	float:left;
+	width:21%;
+	position:relative;
+	left:81%;
+	overflow:hidden;
+}
+#col3 {
+	float:left;
+	width:21%;
+	position:relative;
+	left:85%;
+	overflow:hidden;
+}
+#col4 {
+	float:left;
+	width:21%;
+	position:relative;
+	left:89%;
+	overflow:hidden;
+}
