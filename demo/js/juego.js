@@ -18,7 +18,7 @@ function preload() {
 	  game.load.image('diamondR', 'assets/diamondR.png');
 	game.load.image('diamond', 'assets/diamond.png');
     game.load.spritesheet('dude', 'assets/blue.png', 32, 48);game.load.spritesheet('green', 'assets/green.png', 32, 48);
-	game.load.spritesheet('rose', 'assets/rose.png', 32, 48);
+	game.load.spritesheet('rose', 'assets/fma.png', 21, 32);
 
 
 
@@ -117,8 +117,8 @@ function create() {
     player.animations.add('right', [5, 6, 7, 8], 10, true);
 	player2.animations.add('left', [0, 1, 2, 3], 10, true);
     player2.animations.add('right', [5, 6, 7, 8], 10, true);
-	player3.animations.add('left', [0, 1, 2, 3], 10, true);
-    player3.animations.add('right', [5, 6, 7, 8], 10, true);
+	player3.animations.add('left', [0, 1, 2], 10, true);
+    player3.animations.add('right', [4, 5, 6], 10, true);
 
     //  Finally some stars to collect
     stars = game.add.group();
@@ -394,7 +394,7 @@ function update() {
         //  Stand still
         player3.animations.stop();
 
-        player3.frame = 4;
+        player3.frame = 3;
     }
 
     //  Allow the player to jump if they are touching the ground.

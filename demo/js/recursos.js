@@ -29,6 +29,7 @@ function liberarRecurso(){
 
 //Crear un recurso desde el formulario
 function CreatorRecur(){
+	$("#CreadorRecur").attr("disabled",true);
 	console.log("creator");
 	crearRecurso("PolvoEstelar");
 	crearRecurso("MinnerDiamond");
