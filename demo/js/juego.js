@@ -1,8 +1,11 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update, render:render });
 
+var w = 800, h = 600;
+
 function preload() {
-    game.canvas.id="CanvasGame";
+	game.canvas.id="CanvasGame";
     game.load.image('sky', 'assets/montain.png');
+	game.load.image('menu','assets/number-buttons-90x90.png', 270, 180);
     game.load.image('ground', 'assets/platform.png');
     game.load.image('starA', 'assets/starA.png');
 	 game.load.image('starG', 'assets/starG.png');
@@ -142,6 +145,69 @@ function create() {
 	izq = game.input.keyboard.addKey(Phaser.Keyboard.G);
 	arr = game.input.keyboard.addKey(Phaser.Keyboard.Y);
 	der = game.input.keyboard.addKey(Phaser.Keyboard.J);
+	
+	
+	    /*
+        Code for the pause menu
+    */
+
+    // Create a label to use as a button
+    pause_label = game.add.text(w - 100, 20, 'Pausa', { font: '24px Arial', fill: '#fff' });
+    pause_label.inputEnabled = true;
+    pause_label.events.onInputUp.add(function () {
+        // When the paus button is pressed, we pause the game
+        game.paused = true;
+
+        // Then add the menu
+        menu = game.add.sprite(w/2, h/2, 'menu');
+        menu.anchor.setTo(0.5, 0.5);
+
+        // And a label to illustrate which menu item was chosen. (This is not necessary)
+        choiseLabel = game.add.text(w/2, h-150, 'Haz click en la estrellita de cada color para añadirla al juego', { font: '22px Arial', fill: '#000' });
+        choiseLabel.anchor.setTo(0.5, 0.5);
+    });
+
+    // Add a input listener that can help us return from being paused
+    game.input.onDown.add(unpause, self);
+
+    // And finally the method that handels the pause menu
+    function unpause(event){
+        // Only act if paused
+        if(game.paused){
+            // Calculate the corners of the menu
+            var x1 = w/2 - 270/2, x2 = w/2 + 270/2,
+                y1 = h/2 - 180/2, y2 = h/2 + 180/2;
+
+            // Check if the click was inside the menu
+            if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 ){
+                // The choicemap is an array that will help us see which item was clicked
+                var choisemap = ['verde', 'rosa', 'azul', 'verde', 'rosa', 'azul'];
+
+                // Get menu local coordinates for the click
+                var x = event.x - x1,
+                    y = event.y - y1;
+
+                // Calculate the choice 
+                var choise = Math.floor(x / 90) + 3*Math.floor(y / 90);
+
+                // Display the choice
+                choiseLabel.text = 'tu elegiste una estrellita: ' + choisemap[choise];
+				
+				if(choisemap[choise]=='verde'){
+					var starVerde = starsVerdes.create(200,300,'starG');
+				}
+            }
+            else{
+                // Remove the menu and the label
+                menu.destroy();
+                choiseLabel.destroy();
+
+                // Unpause the game
+                game.paused = false;
+            }
+        }
+    };
+
 
 
 
@@ -149,12 +215,7 @@ function create() {
 
 function update() {
 
-	//variables y función que permite pausar y darle play al juego//
-pauseButton = this.game.add.sprite(10, 10, 'pauseButton');
-	pauseButton.inputEnabled = true;
-	pauseButton.events.onInputUp.add(function () {this.game.paused = true;var starVerde = starsVerdes.create(200,300,'starG');},this);
-	game.input.onDown.add(function () {if(this.game.paused)this.game.paused = false;},this);
-	pauseButton.fixedToCamera = true;
+	
 
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
@@ -261,6 +322,7 @@ pauseButton = this.game.add.sprite(10, 10, 'pauseButton');
     }
 
 
+	 
 }
 
 function collectStar (player, star) {
@@ -294,7 +356,7 @@ function updateCounter() {
 
 function render() {
 
-    game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 550, 32);
+    //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 550, 32);
     //game.debug.text("Next tick: " + game.time.events.next.toFixed(0), 32, 64);
 
 }
