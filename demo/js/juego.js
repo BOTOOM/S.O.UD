@@ -29,22 +29,26 @@ var arriba;
 var arr;
 var izq;
 var der;
-
 var counter = 0;
 var starA;
 var starG;
 var starR;
-var score = 0;
-var scoreText;
+var scoreplayer1 = 0;
+var scoreplayer2 = 0;
+var scoreplayer3 = 0;
+var scoreTextPlayer1;
+var scoreTextPlayer2;
+var scoreTextPlayer3;
 
 
 
 function create() {
-	 text = game.add.text(game.world.centerX, game.world.centerY, 'Counter: 0', { font: "64px Arial", fill: "#000000", align: "center" });
+	text = game.add.text(game.world.centerX, game.world.centerY, 'Counter: 0', { font: "64px Arial", fill: "#000000", align: "center" });
 
-	   game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
+	game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
     text.anchor.setTo(0.5, 0.5);
-    //  We're going to be using physics, so enable the Arcade Physics system
+    
+	//  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //  A simple background for our game
@@ -86,8 +90,8 @@ function create() {
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
-	 game.physics.arcade.enable(player2);
-	  game.physics.arcade.enable(player3);
+	game.physics.arcade.enable(player2);
+	game.physics.arcade.enable(player3);
 
 
 
@@ -113,29 +117,18 @@ function create() {
     //  Finally some stars to collect
     stars = game.add.group();
 	starsVerdes = game.add.group();
+	starsRojas = game.add.group();
 
     //  We will enable physics for any star that is created in this group
     stars.enableBody = true;
 	starsVerdes.enableBody = true;
+    starsRojas.enableBody = true;
 
-
-    //  Here we'll create 12 of them evenly spaced apart
-    for (var i = 0; i < 12; i++)
-    {
-        //  Create a star inside of the 'stars' group
-        var starAzul = stars.create(i * 70, 0, 'starA');
-
-        //  Let gravity do its thing
-        starAzul.body.gravity.y = 300;
-
-        //  This just gives each star a slightly random bounce value
-        starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
-    }
-	//var starRoja = stars.create(100,300,'starR');
-	//var starVerde = starsVerdes.create(200,300,'starG');
 
     //  The score
-    scoreText = game.add.text(16, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#000' });
+    scoreTextplayer1 = game.add.text(16, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#2700eb' });
+	scoreTextplayer2 = game.add.text(176, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#11610f' });
+	scoreTextplayer3 = game.add.text(346, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#eb0042' });
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
@@ -155,7 +148,7 @@ function create() {
     pause_label = game.add.text(w - 100, 20, 'Pausa', { font: '24px Arial', fill: '#fff' });
     pause_label.inputEnabled = true;
     pause_label.events.onInputUp.add(function () {
-        // When the paus button is pressed, we pause the game
+    // When the paus button is pressed, we pause the game
         game.paused = true;
 
         // Then add the menu
@@ -180,7 +173,7 @@ function create() {
 
             // Check if the click was inside the menu
             if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 ){
-                // The choicemap is an array that will help us see which item was clicked
+            // The choicemap is an array that will help us see which item was clicked
                 var choisemap = ['verde', 'rosa', 'azul', 'verde', 'rosa', 'azul'];
 
                 // Get menu local coordinates for the click
@@ -192,10 +185,34 @@ function create() {
 
                 // Display the choice
                 choiseLabel.text = 'tu elegiste una estrellita: ' + choisemap[choise];
-				
-				if(choisemap[choise]=='verde'){
-					var starVerde = starsVerdes.create(200,300,'starG');
+				if(choisemap[choise]=='rosa'){
+					var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
+					//  Let gravity do its thing
+						starRoja.body.gravity.y = 30;
+						//  This just gives each star a slightly random bounce value
+						starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
 				}
+				if(choisemap[choise]=='verde'){
+					var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
+					//  Let gravity do its thing
+						starVerde.body.gravity.y = 30;
+						//  This just gives each star a slightly random bounce value
+						starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
+				}
+				if(choisemap[choise]=='azul'){
+					
+						//  Create a star inside of the 'stars' group
+						var starAzul = stars.create(game.world.randomX, game.world.randomY, 'starA');
+
+						//  Let gravity do its thing
+						starAzul.body.gravity.y = 30;
+						
+
+						//  This just gives each star a slightly random bounce value
+						starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
+    
+				}
+				
             }
             else{
                 // Remove the menu and the label
@@ -221,13 +238,14 @@ function update() {
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(stars, platforms);
 	game.physics.arcade.collide(player2, platforms);
-    //game.physics.arcade.collide(stars, platforms);
+    game.physics.arcade.collide(starsVerdes, platforms);
 	game.physics.arcade.collide(player3, platforms);
-    //game.physics.arcade.collide(stars, platforms);
+    game.physics.arcade.collide(starsRojas, platforms);
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
 	game.physics.arcade.overlap(player2, starsVerdes, collectStar2, null, this);
+	game.physics.arcade.overlap(player3, starsRojas, collectStar3, null, this);
 
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
@@ -331,8 +349,8 @@ function collectStar (player, star) {
     star.kill();
 
     //  Add and update the score
-    score += 10;
-    scoreText.text = 'Puntaje: ' + score;
+    scoreplayer1 += 10;
+    scoreTextplayer1.text = 'Puntaje: ' + scoreplayer1;
 
 }
 function collectStar2 (player2, starVerde) {
@@ -341,10 +359,22 @@ function collectStar2 (player2, starVerde) {
     starVerde.kill();
 
     //  Add and update the score
-    score += 10;
-    scoreText.text = 'Puntaje: ' + score;
+    scoreplayer2 += 10;
+    scoreTextplayer2.text = 'Puntaje: ' + scoreplayer2;
 
 }
+
+function collectStar3 (player3, starRoja) {
+
+    // Removes the star from the screen
+    starRoja.kill();
+
+    //  Add and update the score
+    scoreplayer3 += 10;
+    scoreTextplayer3.text = 'Puntaje: ' + scoreplayer3;
+
+}
+
 
 function updateCounter() {
 
