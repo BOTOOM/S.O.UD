@@ -2,6 +2,21 @@ body{
   overflow: scroll !important;
 }
 
+.Times New Roman{
+	font-family:'Lobster', cursive; ;
+}
+
+#porEject{
+
+  position: absolute;
+  top:  620px;
+  left: 150px;
+	border: 1px solid #C6C1F2;
+	width: 350px;
+	height: 150px;
+
+}
+
 .tabl{
 	float: left;
 	position: relative;

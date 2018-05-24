@@ -6,8 +6,8 @@ function nodoCola(){
 
 /* Clase Cola */
  function Cola() {
-	
-	/* Atributos */	
+
+	/* Atributos */
 	this.nodoRaiz = null;
 	this.nodoFondo = null;
 	this.tam = 0;
@@ -18,23 +18,23 @@ function nodoCola(){
 	this.Listaatender = atender;
 	this.ListagetRaiz = getRaiz;
 	this.ListagetTam = getTam;
-	
+
  }
- 
+
 function vacia(){
 	if(this.nodoRaiz == null){
-		
+
 		return true;
 	}
 	else{
 		return false;
 	}
  }
- 
+
  //Método insertar
  function insertar(proceso){
 	var nuevo = new nodoCola();
-	
+
 	nuevo.proceso = proceso;
 	nuevo.sig = null;
 
@@ -46,39 +46,39 @@ function vacia(){
 		this.nodoFondo.sig = nuevo;
 		this.nodoFondo = nuevo;
 	}
-	
+
 	this.tam++;
  }
- 
+
   //Método atender
  function atender(){
-	 
+
 	if (!this.Listavacia()){
-		
+
 		var aux = this.nodoRaiz;
 		if(this.nodoRaiz == this.nodoFondo){
-			
+
 			this.nodoRaiz = null;
 			this.nodoFondo = null;
-			
+
 		}
 		else{
 			this.nodoRaiz = this.nodoRaiz.sig;
 		}
 		return aux.proceso;
-	} 
+	}
 	else{
 		return 0;
 	}
-	
+
  }
- 
+
  function getRaiz(){
 	var aux = new nodoCola();
 	aux = this.nodoRaiz;
 	return aux;
  }
- 
+
  function getTam(){
 	return this.tam;
  }

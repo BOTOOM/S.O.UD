@@ -42,7 +42,7 @@ function crearRecurso(nomRecu){
 	var nombreRecurso = nomRecu;
 	recursoCreado = new recurso(nombreRecurso, 1/*, cantidadRecurso*/);
 	arregloRecursos.push(recursoCreado);
-	actualizarRecurso();
+	//actualizarRecurso();
 	console.log(arregloRecursos.toString());
 	/*$('#formularioRecurso').each (function(){
   		this.reset();

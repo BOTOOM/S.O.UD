@@ -183,14 +183,19 @@ function create() {
 
     // And finally the method that handels the pause menu
     function unpause(event){
+			console.log("entra pausa");
+			pausarProcesadores();
         // Only act if paused
         if(game.paused){
+
             // Calculate the corners of the menu
             var x1 = w/2 - 270/2, x2 = w/2 + 270/2,
                 y1 = h/2 - 180/2, y2 = h/2 + 180/2;
 
             // Check if the click was inside the menu
             if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 ){
+
+
             // The choicemap is an array that will help us see which item was clicked
                 var choisemap = ['Everde', 'Erosa', 'Eazul', 'Bverde', 'Brosa', 'Bazul','Dverde', 'Drosa', 'Dazul'];
 
@@ -328,6 +333,7 @@ function create() {
                 menu.destroy();
                 choiseLabel.destroy();
 								console.log("fuera menu");
+								ejecutarhilos();
                 // Unpause the game
                 game.paused = false;
             }
