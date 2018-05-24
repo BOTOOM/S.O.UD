@@ -10,6 +10,11 @@ function preload() {
     game.load.image('starA', 'assets/starA.png');
 	 game.load.image('starG', 'assets/starG.png');
 	  game.load.image('starR', 'assets/starR.png');
+	game.load.image('blueball', 'assets/blueball.png');
+	 game.load.image('greenball', 'assets/greenball.png');
+    game.load.image('redball', 'assets/redball.png');
+	 game.load.image('diamondG', 'assets/diamondG.png');
+	  game.load.image('diamondR', 'assets/diamondR.png');
 	game.load.image('diamond', 'assets/diamond.png');
     game.load.spritesheet('dude', 'assets/blue.png', 32, 48);game.load.spritesheet('green', 'assets/green.png', 32, 48);
 	game.load.spritesheet('rose', 'assets/rose.png', 32, 48);
@@ -118,12 +123,24 @@ function create() {
     stars = game.add.group();
 	starsVerdes = game.add.group();
 	starsRojas = game.add.group();
+	diamante= game.add.group();
+	diamanteG= game.add.group();
+	diamanteR= game.add.group();
+	ballR= game.add.group();
+	ballG= game.add.group();
+	ballB= game.add.group();
+	
 
     //  We will enable physics for any star that is created in this group
     stars.enableBody = true;
 	starsVerdes.enableBody = true;
     starsRojas.enableBody = true;
-
+	diamante.enableBody = true;
+	diamanteG.enableBody = true;
+	diamanteR.enableBody = true;
+	ballR.enableBody = true;
+	ballG.enableBody = true;
+	ballB.enableBody = true;
 
     //  The score
     scoreTextplayer1 = game.add.text(16, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#2700eb' });
@@ -156,7 +173,7 @@ function create() {
         menu.anchor.setTo(0.5, 0.5);
 
         // And a label to illustrate which menu item was chosen. (This is not necessary)
-        choiseLabel = game.add.text(w/2, h-150, 'Haz click en la estrellita de cada color para añadirla al juego', { font: '22px Arial', fill: '#000' });
+        choiseLabel = game.add.text(w/2, h-150, 'Haz click en el recurso de cada color para añadirla al juego', { font: '22px Arial', fill: '#000' });
         choiseLabel.anchor.setTo(0.5, 0.5);
     });
 
@@ -174,32 +191,32 @@ function create() {
             // Check if the click was inside the menu
             if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 ){
             // The choicemap is an array that will help us see which item was clicked
-                var choisemap = ['verde', 'rosa', 'azul', 'verde', 'rosa', 'azul'];
+                var choisemap = ['Everde', 'Erosa', 'Eazul', 'Bverde', 'Brosa', 'Bazul','Dverde', 'Drosa', 'Dazul'];
 
                 // Get menu local coordinates for the click
                 var x = event.x - x1,
                     y = event.y - y1;
 
                 // Calculate the choice 
-                var choise = Math.floor(x / 90) + 3*Math.floor(y / 90);
+                var choise = Math.floor(x / 80.5) + 3*Math.floor(y / 80.5);
 
                 // Display the choice
-                choiseLabel.text = 'tu elegiste una estrellita: ' + choisemap[choise];
-				if(choisemap[choise]=='rosa'){
+                choiseLabel.text = 'tu elegiste: ' + choisemap[choise];
+				if(choisemap[choise]=='Erosa'){
 					var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
 					//  Let gravity do its thing
 						starRoja.body.gravity.y = 30;
 						//  This just gives each star a slightly random bounce value
 						starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
 				}
-				if(choisemap[choise]=='verde'){
+				if(choisemap[choise]=='Everde'){
 					var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
 					//  Let gravity do its thing
 						starVerde.body.gravity.y = 30;
 						//  This just gives each star a slightly random bounce value
 						starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
 				}
-				if(choisemap[choise]=='azul'){
+				if(choisemap[choise]=='Eazul'){
 					
 						//  Create a star inside of the 'stars' group
 						var starAzul = stars.create(game.world.randomX, game.world.randomY, 'starA');
@@ -212,7 +229,87 @@ function create() {
 						starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
     
 				}
+				if(choisemap[choise]=='Bazul'){
+					
+						//  Create a star inside of the 'stars' group
+						var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
+
+						//  Let gravity do its thing
+						bazul.body.gravity.y = 30;
+						
+
+						//  This just gives each star a slightly random bounce value
+						bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+    
+				}
 				
+				if(choisemap[choise]=='Bverde'){
+					
+						//  Create a star inside of the 'stars' group
+						var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
+
+						//  Let gravity do its thing
+						bverde.body.gravity.y = 30;
+						
+
+						//  This just gives each star a slightly random bounce value
+						bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+    
+				}
+				if(choisemap[choise]=='Brosa'){
+					
+						//  Create a star inside of the 'stars' group
+						var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
+
+						//  Let gravity do its thing
+						brosa.body.gravity.y = 30;
+						
+
+						//  This just gives each star a slightly random bounce value
+						brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+    
+				}
+				
+				if(choisemap[choise]=='Drosa'){
+					
+						//  Create a star inside of the 'stars' group
+						var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
+
+						//  Let gravity do its thing
+						drosa.body.gravity.y = 30;
+						
+
+						//  This just gives each star a slightly random bounce value
+						drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+    
+				}
+				
+				if(choisemap[choise]=='Dazul'){
+					
+						//  Create a star inside of the 'stars' group
+						var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
+
+						//  Let gravity do its thing
+						dazul.body.gravity.y = 30;
+						
+
+						//  This just gives each star a slightly random bounce value
+						dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+    
+				}
+				if(choisemap[choise]=='Dverde'){
+					
+						//  Create a star inside of the 'stars' group
+						var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
+
+						//  Let gravity do its thing
+						dverde.body.gravity.y = 30;
+						
+
+						//  This just gives each star a slightly random bounce value
+						dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+    
+				}
             }
             else{
                 // Remove the menu and the label
@@ -241,9 +338,22 @@ function update() {
     game.physics.arcade.collide(starsVerdes, platforms);
 	game.physics.arcade.collide(player3, platforms);
     game.physics.arcade.collide(starsRojas, platforms);
+	game.physics.arcade.collide(diamante, platforms);
+	game.physics.arcade.collide(diamanteG, platforms);
+	game.physics.arcade.collide(diamanteR, platforms);
+	game.physics.arcade.collide(ballR, platforms);
+	game.physics.arcade.collide(ballG, platforms);
+    game.physics.arcade.collide(ballB, platforms);
+	
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
+	game.physics.arcade.overlap(player, diamante, collectStar, null, this);
+	game.physics.arcade.overlap(player2, diamanteG, collectStar2, null, this);
+	game.physics.arcade.overlap(player3, diamanteR, collectStar3, null, this);
+	game.physics.arcade.overlap(player3, ballR, collectStar3, null, this);
+	game.physics.arcade.overlap(player2, ballG, collectStar2, null, this);
+	game.physics.arcade.overlap(player, ballB, collectStar, null, this);
 	game.physics.arcade.overlap(player2, starsVerdes, collectStar2, null, this);
 	game.physics.arcade.overlap(player3, starsRojas, collectStar3, null, this);
 
@@ -353,6 +463,11 @@ function collectStar (player, star) {
     scoreTextplayer1.text = 'Puntaje: ' + scoreplayer1;
 
 }
+
+
+
+
+
 function collectStar2 (player2, starVerde) {
 
     // Removes the star from the screen
