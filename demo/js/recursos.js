@@ -28,15 +28,25 @@ function liberarRecurso(){
 }
 
 //Crear un recurso desde el formulario
-function crearRecurso(){
-	var nombreRecurso = $("#nombreRecurso").val();
+function CreatorRecur(){
+	console.log("creator");
+	crearRecurso("PolvoEstelar");
+	crearRecurso("MinnerDiamond");
+	crearRecurso("FactoryBall");
+}
+
+
+
+function crearRecurso(nomRecu){
+	console.log("creo un recurso");
+	var nombreRecurso = nomRecu;
 	recursoCreado = new recurso(nombreRecurso, 1/*, cantidadRecurso*/);
 	arregloRecursos.push(recursoCreado);
 	actualizarRecurso();
 	console.log(arregloRecursos.toString());
-	$('#formularioRecurso').each (function(){
+	/*$('#formularioRecurso').each (function(){
   		this.reset();
-	});
+	});*/
 }
 
 //Actualizar el proceso

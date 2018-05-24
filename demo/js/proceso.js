@@ -48,6 +48,41 @@ $(document).ready(function(){
 		});
 	});
 });*/
+
+
+function CreacionProcesos(nProcesador, noProceso,recu) {
+	var numProcesador= nProcesador;
+	var nomProceso=noProceso;
+	var tiempoProceso= numAleatorio();
+	var recurso= recu;
+
+	if (numProcesador == "1") {
+		var proceso = new nodoProceso(contador1, nomProceso, tiempoProceso, recurso);
+		procesador1.CrearProceso(proceso);
+		contador1++;
+		$("#listos1").html(dibujarCola(procesador1.listos));
+
+	} else{
+		if (numProcesador == "2") {
+			var proceso = new nodoProceso(contador2, nomProceso, tiempoProceso, recurso);
+			procesador2.CrearProceso(proceso);
+			contador2++;
+			$("#listos2").html(dibujarCola(procesador2.listos));
+		}else{
+			var proceso = new nodoProceso(contador3, nomProceso, tiempoProceso, recurso);
+			procesador3.CrearProceso(proceso);
+			contador3++;
+			$("#listos3").html(dibujarCola(procesador3.listos));
+		}
+	}
+}
+
+function numAleatorio(){
+	var min=2;
+	var max=10;
+	 return Math.floor(Math.random() * (max - min)) + min;
+}
+
 //Funcion para dibujar la cola
 function dibujarCola(cola){
 	var colaAux = new Cola();

@@ -48,6 +48,9 @@ $(document).ready(function(){
 
 });*/
 //Ejecutar los hilos para el manejo de procesadores
+
+
+
 function ejecutarhilos(){
 	hilo1 = setInterval(function(){
 			procesador1.CorrerProcesador(arregloRecursos);

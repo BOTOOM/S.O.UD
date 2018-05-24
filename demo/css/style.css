@@ -1,15 +1,14 @@
 body{
-	/*font-size:14px;*/
-	/*color:#666;*/
-
-	/* CSS3 Radial Gradients */
-	/*font-family:Arial, Helvetica, sans-serif;*/
   overflow: scroll !important;
 }
 
-.Times New Roman{
-	font-family:'Lobster', cursive; ;
-}
+.tabl{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 31px;
+	}
 
 .procesador {
   float: left;
@@ -52,36 +51,36 @@ body{
 
 /*azul---------------------------------------------------*/
 .cola31{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#C6C1F2;
 }
 .cola21{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#8E82F9;
 }
 .cola11{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#C6C1F2;
 }
 
 .cola1{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#8E82F9;
 }
 
@@ -89,70 +88,70 @@ body{
 .cola32{
 	float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#F7BEBE;
 }
 .cola22{
 	float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#F78181;
 }
 .cola12{
 	float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#F7BEBE;
 }
 
 .cola2{
 	float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#F78181;
 }
 
 /*verde-------------------------------------------*/
 
 .cola33{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#C2F7BE;
 }
 .cola23{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#84EF7D;
 }
 .cola13{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#C2F7BE;
 }
 
 .cola3{
-	float: left;
+  float: left;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll;
 	width: 25%;
-	height: 300px;
+	height: 165px;
 	background:#84EF7D;
 }
 
@@ -186,4 +185,10 @@ body{
 	position:relative;
 	left:15%;
 	overflow:hidden;
+}
+
+#CreadorRecur{
+  position: absolute;
+  top:  620px;
+  left: 20px;
 }

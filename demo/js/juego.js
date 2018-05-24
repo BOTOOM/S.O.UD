@@ -2,6 +2,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', { preload: preload, cr
 
 var w = 800, h = 600;
 
+
 function preload() {
 	game.canvas.id="CanvasGame";
     game.load.image('sky', 'assets/montain.png');
@@ -52,7 +53,7 @@ function create() {
 
 	game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
     text.anchor.setTo(0.5, 0.5);
-    
+
 	//  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -129,7 +130,7 @@ function create() {
 	ballR= game.add.group();
 	ballG= game.add.group();
 	ballB= game.add.group();
-	
+
 
     //  We will enable physics for any star that is created in this group
     stars.enableBody = true;
@@ -155,8 +156,8 @@ function create() {
 	izq = game.input.keyboard.addKey(Phaser.Keyboard.G);
 	arr = game.input.keyboard.addKey(Phaser.Keyboard.Y);
 	der = game.input.keyboard.addKey(Phaser.Keyboard.J);
-	
-	
+
+
 	    /*
         Code for the pause menu
     */
@@ -197,12 +198,14 @@ function create() {
                 var x = event.x - x1,
                     y = event.y - y1;
 
-                // Calculate the choice 
+                // Calculate the choice
                 var choise = Math.floor(x / 80.5) + 3*Math.floor(y / 80.5);
 
                 // Display the choice
                 choiseLabel.text = 'tu elegiste: ' + choisemap[choise];
 				if(choisemap[choise]=='Erosa'){
+					console.log("estrellaroja");
+					CreacionProcesos("2","EstrellaRoja","PolvoEstelar");
 					var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
 					//  Let gravity do its thing
 						starRoja.body.gravity.y = 30;
@@ -210,6 +213,7 @@ function create() {
 						starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
 				}
 				if(choisemap[choise]=='Everde'){
+					CreacionProcesos("3","EstrellaVerde","PolvoEstelar");
 					var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
 					//  Let gravity do its thing
 						starVerde.body.gravity.y = 30;
@@ -217,105 +221,113 @@ function create() {
 						starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
 				}
 				if(choisemap[choise]=='Eazul'){
-					
+
+					CreacionProcesos("1","EstrellaAzul","PolvoEstelar");
 						//  Create a star inside of the 'stars' group
 						var starAzul = stars.create(game.world.randomX, game.world.randomY, 'starA');
 
 						//  Let gravity do its thing
 						starAzul.body.gravity.y = 30;
-						
+
 
 						//  This just gives each star a slightly random bounce value
 						starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
-    
+
 				}
 				if(choisemap[choise]=='Bazul'){
-					
+
+					CreacionProcesos("1","BolaAzul","FactoryBall");
 						//  Create a star inside of the 'stars' group
 						var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
 
 						//  Let gravity do its thing
 						bazul.body.gravity.y = 30;
-						
+
 
 						//  This just gives each star a slightly random bounce value
 						bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
-    
+
 				}
-				
+
 				if(choisemap[choise]=='Bverde'){
-					
+
+					CreacionProcesos("3","BolaVerde","FactoryBall");
 						//  Create a star inside of the 'stars' group
 						var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
 
 						//  Let gravity do its thing
 						bverde.body.gravity.y = 30;
-						
+
 
 						//  This just gives each star a slightly random bounce value
 						bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
-    
+
 				}
 				if(choisemap[choise]=='Brosa'){
-					
+
+					CreacionProcesos("2","BolaRoja","FactoryBall");
 						//  Create a star inside of the 'stars' group
 						var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
 
 						//  Let gravity do its thing
 						brosa.body.gravity.y = 30;
-						
+
 
 						//  This just gives each star a slightly random bounce value
 						brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
-    
+
 				}
-				
+
 				if(choisemap[choise]=='Drosa'){
-					
+
+				CreacionProcesos("2","DiamondRojo","MinnerDiamond");
+
 						//  Create a star inside of the 'stars' group
 						var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
 
 						//  Let gravity do its thing
 						drosa.body.gravity.y = 30;
-						
+
 
 						//  This just gives each star a slightly random bounce value
 						drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
-    
+
 				}
-				
+
 				if(choisemap[choise]=='Dazul'){
-					
+
+					CreacionProcesos("1","DiamondAzul","MinnerDiamond");
 						//  Create a star inside of the 'stars' group
 						var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
 
 						//  Let gravity do its thing
 						dazul.body.gravity.y = 30;
-						
+
 
 						//  This just gives each star a slightly random bounce value
 						dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
-    
+
 				}
 				if(choisemap[choise]=='Dverde'){
-					
+
+					CreacionProcesos("3","DiamondVerde","MinnerDiamond");
 						//  Create a star inside of the 'stars' group
 						var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
 
 						//  Let gravity do its thing
 						dverde.body.gravity.y = 30;
-						
+
 
 						//  This just gives each star a slightly random bounce value
 						dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
-    
+
 				}
             }
             else{
                 // Remove the menu and the label
                 menu.destroy();
                 choiseLabel.destroy();
-
+								console.log("fuera menu");
                 // Unpause the game
                 game.paused = false;
             }
@@ -329,7 +341,7 @@ function create() {
 
 function update() {
 
-	
+
 
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
@@ -344,7 +356,7 @@ function update() {
 	game.physics.arcade.collide(ballR, platforms);
 	game.physics.arcade.collide(ballG, platforms);
     game.physics.arcade.collide(ballB, platforms);
-	
+
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
@@ -450,7 +462,7 @@ function update() {
     }
 
 
-	 
+
 }
 
 function collectStar (player, star) {
