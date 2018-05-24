@@ -1,31 +1,116 @@
+body{
+	/*font-size:14px;*/
+	/*color:#666;*/
+
+	/* CSS3 Radial Gradients */
+	/*font-family:Arial, Helvetica, sans-serif;*/
+  overflow: scroll !important;
+}
+
 .Times New Roman{
 	font-family:'Lobster', cursive; ;
 }
 
 .procesador {
   float: left;
+	overflow: hidden;
   position: absolute;
-  overflow: hidden;
   width: 558px;
-  height: 285px;
-  top:  0px;
+  height: 265px;
+  top:  -30px;
   left: 810px;
 }
+
+.procesador2 {
+  float: left;
+	overflow: hidden;
+  position: absolute;
+  width: 558px;
+  height: 265px;
+  top:  235px;
+  left: 810px;
+}
+
+.procesador3 {
+  float: left;
+	overflow: hidden;
+  position: absolute;
+  width: 558px;
+  height: 265px;
+  top:  495px;
+  left: 810px;
+}
+
 
 #CanvasGame{
   position: absolute;
   top:  0px;
   left: 0px;
+  border: 5px solid black;
 }
 
-.cola3{
+
+/*azul---------------------------------------------------*/
+.cola31{
 	float: left;
 	position: relative;
 	overflow: hidden;
 	width: 25%;
 	height: 300px;
-	background:#FFFFFF;
+	background:#C6C1F2;
 }
+.cola21{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#8E82F9;
+}
+.cola11{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#C6C1F2;
+}
+
+.cola1{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#8E82F9;
+}
+
+/*roja---------------------------------------------------------*/
+.cola32{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#F7BEBE;
+}
+.cola22{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#F78181;
+}
+.cola12{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#F7BEBE;
+}
+
 .cola2{
 	float: left;
 	position: relative;
@@ -34,49 +119,71 @@
 	height: 300px;
 	background:#F78181;
 }
-.cola1{
+
+/*verde-------------------------------------------*/
+
+.cola33{
 	float: left;
 	position: relative;
 	overflow: hidden;
 	width: 25%;
 	height: 300px;
-	background:#FFFFFF;
+	background:#C2F7BE;
+}
+.cola23{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#84EF7D;
+}
+.cola13{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 25%;
+	height: 300px;
+	background:#C2F7BE;
 }
 
-.cola{
+.cola3{
 	float: left;
 	position: relative;
 	overflow: hidden;
 	width: 25%;
 	height: 300px;
-	background:#F78181;
+	background:#84EF7D;
 }
+
+
+/*----------------------------------------------------------*/
 
 #col1 {
 	float:left;
 	width:21%;
 	position:relative;
-	left:1%;
+	left:9%;
 	overflow:hidden;
 }
 #col2 {
 	float:left;
 	width:21%;
 	position:relative;
-	left:81%;
+	left:9%;
 	overflow:hidden;
 }
 #col3 {
 	float:left;
 	width:21%;
 	position:relative;
-	left:85%;
+	left:12%;
 	overflow:hidden;
 }
 #col4 {
 	float:left;
 	width:21%;
 	position:relative;
-	left:89%;
+	left:15%;
 	overflow:hidden;
 }
