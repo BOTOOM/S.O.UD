@@ -93,6 +93,56 @@ function correrProcesador(recursos){
 		procesoAux.qRestante --;
 		//Si no le queda tiempo de ejecución al proceso va a la cola de terminados
 		if(procesoAux.tiempo == 0){
+
+			if(procesoAux.nombre=="EstrellaAzul"){
+				var starAzul = stars.create(game.world.randomX, game.world.randomY, 'starA');
+					starAzul.body.gravity.y = 30;
+					starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="EstrellaRoja"){
+				var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
+				//  Let gravity do its thing
+					starRoja.body.gravity.y = 30;
+					//  This just gives each star a slightly random bounce value
+					starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="EstrellaVerde"){
+				var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
+					starVerde.body.gravity.y = 30;
+					starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="BolaAzul"){
+				var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
+				bazul.body.gravity.y = 30;
+				bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="BolaVerde"){
+				var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
+				bverde.body.gravity.y = 30;
+				bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="BolaRoja"){
+				var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
+				brosa.body.gravity.y = 30;
+				brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="DiamondRojo"){
+				var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
+				drosa.body.gravity.y = 30;
+				drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="DiamondAzul"){
+				var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
+				dazul.body.gravity.y = 30;
+				dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+			if(procesoAux.nombre=="Dverde"){
+				var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
+				dverde.body.gravity.y = 30;
+				dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+			}
+
+			
 			//Buscar el recurso y liberarlo
 			for(var i in recursos){
 				if(recursos[i].nombre == procesoAux.recurso){

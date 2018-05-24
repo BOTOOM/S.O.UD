@@ -211,46 +211,19 @@ function create() {
 				if(choisemap[choise]=='Erosa'){
 					console.log("estrellaroja");
 					CreacionProcesos("2","EstrellaRoja","PolvoEstelar");
-					var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
-					//  Let gravity do its thing
-						starRoja.body.gravity.y = 30;
-						//  This just gives each star a slightly random bounce value
-						starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
+
 				}
 				if(choisemap[choise]=='Everde'){
 					CreacionProcesos("3","EstrellaVerde","PolvoEstelar");
-					var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
-					//  Let gravity do its thing
-						starVerde.body.gravity.y = 30;
-						//  This just gives each star a slightly random bounce value
-						starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
 				}
 				if(choisemap[choise]=='Eazul'){
 
 					CreacionProcesos("1","EstrellaAzul","PolvoEstelar");
-						//  Create a star inside of the 'stars' group
-						var starAzul = stars.create(game.world.randomX, game.world.randomY, 'starA');
-
-						//  Let gravity do its thing
-						starAzul.body.gravity.y = 30;
-
-
-						//  This just gives each star a slightly random bounce value
-						starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
 
 				}
 				if(choisemap[choise]=='Bazul'){
 
 					CreacionProcesos("1","BolaAzul","FactoryBall");
-						//  Create a star inside of the 'stars' group
-						var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
-
-						//  Let gravity do its thing
-						bazul.body.gravity.y = 30;
-
-
-						//  This just gives each star a slightly random bounce value
-						bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
 
 				}
 
@@ -258,28 +231,14 @@ function create() {
 
 					CreacionProcesos("3","BolaVerde","FactoryBall");
 						//  Create a star inside of the 'stars' group
-						var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
 
-						//  Let gravity do its thing
-						bverde.body.gravity.y = 30;
-
-
-						//  This just gives each star a slightly random bounce value
-						bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 
 				}
 				if(choisemap[choise]=='Brosa'){
 
 					CreacionProcesos("2","BolaRoja","FactoryBall");
 						//  Create a star inside of the 'stars' group
-						var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
 
-						//  Let gravity do its thing
-						brosa.body.gravity.y = 30;
-
-
-						//  This just gives each star a slightly random bounce value
-						brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
 
 				}
 
@@ -288,43 +247,20 @@ function create() {
 				CreacionProcesos("2","DiamondRojo","MinnerDiamond");
 
 						//  Create a star inside of the 'stars' group
-						var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
-
-						//  Let gravity do its thing
-						drosa.body.gravity.y = 30;
-
-
-						//  This just gives each star a slightly random bounce value
-						drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
 
 				}
 
 				if(choisemap[choise]=='Dazul'){
 
 					CreacionProcesos("1","DiamondAzul","MinnerDiamond");
-						//  Create a star inside of the 'stars' group
-						var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
-
-						//  Let gravity do its thing
-						dazul.body.gravity.y = 30;
-
-
-						//  This just gives each star a slightly random bounce value
-						dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+						//  Create a star inside of the 'stars'
 
 				}
 				if(choisemap[choise]=='Dverde'){
 
 					CreacionProcesos("3","DiamondVerde","MinnerDiamond");
 						//  Create a star inside of the 'stars' group
-						var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
 
-						//  Let gravity do its thing
-						dverde.body.gravity.y = 30;
-
-
-						//  This just gives each star a slightly random bounce value
-						dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 
 				}
             }
