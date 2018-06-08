@@ -32,7 +32,7 @@ var player2;
 var player3;
 var platforms;
 var cursors;
-var izquierda
+var izquierda;
 var derecha;
 var arriba;
 var arr;
@@ -51,6 +51,7 @@ var scoreTextPlayer3;
 var diosazul;
 var diosrojo;
 var diosverde;
+var diosaparicion;
 
 
 
@@ -102,9 +103,9 @@ function create() {
 	 diosazul = game.add.sprite(880, 50, 'diosazul');
 	 diosrojo = game.add.sprite(500, 190, 'diosrojo');
 	 diosverde = game.add.sprite(80, 50, 'diosverde');
-	
-	
-		
+
+
+
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
@@ -168,7 +169,7 @@ function create() {
 	izq = game.input.keyboard.addKey(Phaser.Keyboard.G);
 	arr = game.input.keyboard.addKey(Phaser.Keyboard.Y);
 	der = game.input.keyboard.addKey(Phaser.Keyboard.J);
-	diosaparicion=game.input.keyboard.addKey(Phaser.keyboard.N);
+	diosaparicion=game.input.keyboard.addKey(Phaser.Keyboard.N);
 
 
 	    /*
@@ -311,7 +312,7 @@ function update() {
 	game.physics.arcade.collide(ballR, platforms);
 	game.physics.arcade.collide(ballG, platforms);
     game.physics.arcade.collide(ballB, platforms);
-	
+
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
@@ -328,8 +329,8 @@ function update() {
     player.body.velocity.x = 0;
 	player2.body.velocity.x = 0;
 	player3.body.velocity.x = 0;
-	
-	
+
+
 
     if (cursors.left.isDown)
     {
@@ -344,7 +345,7 @@ function update() {
         player.body.velocity.x = 150;
 
         player.animations.play('right');
-		
+
     }
     else
     {
@@ -420,7 +421,9 @@ function update() {
     {
         player3.body.velocity.y = -350;
     }
-
+		if (diosaparicion.isDown){
+			muerteDiosAzul(300,20);
+		}
 
 
 }
@@ -437,13 +440,12 @@ function collectStar (player, star) {
 }
 
 function muerteDiosAzul(x,y){
-	
-	if (diosaparicion.isDown)
-    {
+
+
 	diosazul.kill();
-	diosazul = game.add.sprite(x, y, 'diosazul');
-	}
-		
+	diosazul = game.add.sprite(x,y, 'diosazul');
+
+
 }
 
 
