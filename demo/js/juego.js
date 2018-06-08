@@ -32,9 +32,18 @@ function preload() {
 	//game.load.image('diosverde', 'assets/diosverde.png');
     //game.load.image('diosrojo', 'assets/diosrojo.png');
 	 //game.load.image('diosazul', 'assets/diosazul.png');
-	 game.load.spritesheet('diosverde', 'assets/diosverde.png',32,48);
-    game.load.spritesheet('diosrojo', 'assets/diosrojo.png',32,48);
-	 game.load.spritesheet('angelazul', 'assets/angelazulcurando.png',32,48);
+	// game.load.spritesheet('diosverde', 'assets/diosverde.png',32,48);
+    //game.load.spritesheet('diosrojo', 'assets/diosrojo.png',32,48);
+	game.load.spritesheet('angelazul', 'assets/angelazulcurando.png',72.35,79);
+	game.load.spritesheet('angelverde', 'assets/angelverdecurando.png',72.35,79);
+	game.load.spritesheet('angelrojo', 'assets/angelrojocurando.png',72.35,79);
+	game.load.spritesheet('azulcastigando', 'assets/azulcastigando.png',93,96);
+	game.load.spritesheet('verdecastigando', 'assets/verdecastigando.png',93,96);
+	game.load.spritesheet('rojocastigando', 'assets/rojocastigando.png',93,96);
+	game.load.spritesheet('azulcreando', 'assets/azulcreando.png',73,82);
+	game.load.spritesheet('verdecreando', 'assets/verdecreando.png',73,82);
+	game.load.spritesheet('rojocreando', 'assets/rojocreando.png',73,82);
+
 
 
 
@@ -69,6 +78,8 @@ var diosaparicion;
 
 
 function create() {
+	
+	
 	text = game.add.text(game.world.centerX, game.world.centerY, 'Counter: 0', { font: "64px Arial", fill: "#000000", align: "center" });
 
 	game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
@@ -113,11 +124,47 @@ function create() {
     player = game.add.sprite(32, game.world.height - 150, 'dude');
 	player3 = game.add.sprite(142, game.world.height - 150, 'rose');
 	player2 = game.add.sprite(272, game.world.height - 150, 'green');
-	 diosazul = game.add.sprite(880, 50, 'angelazul');
-	 diosrojo = game.add.sprite(500, 190, 'diosrojo');
-	 diosverde = game.add.sprite(80, 50, 'diosverde');
+	 //diosazul = game.add.sprite(880, 50, 'angelazul');
+	 //diosrojo = game.add.sprite(500, 190, 'diosrojo');
+	 //diosverde = game.add.sprite(80, 50, 'diosverde');
+	var angelazulcurando = game.add.sprite(150, 150, 'angelazul');
+	var walk = angelazulcurando.animations.add('walk',[1, 2, 3], 5, true);
+	angelazulcurando.animations.play('walk');
+	
+	var angelverdecurando = game.add.sprite(250, 150, 'angelverde');
+	var walk = angelverdecurando.animations.add('walk',[1, 2, 3], 5, true);
+	angelverdecurando.animations.play('walk');
+	
+	var angelrojocurando = game.add.sprite(350, 150, 'angelrojo');
+	var walk = angelrojocurando.animations.add('walk',[1, 2, 3], 5, true);
+	angelrojocurando.animations.play('walk');
 
-
+	
+	var azulcastigando = game.add.sprite(450, 100, 'azulcastigando');
+	var walk = azulcastigando.animations.add('walk',[0,1, 2, 3], 5, true);
+	azulcastigando.animations.play('walk');
+	
+	
+	var rojocastigando = game.add.sprite(50, 100, 'rojocastigando');
+	var walk = rojocastigando.animations.add('walk',[0,1, 2, 3], 5, true);
+	rojocastigando.animations.play('walk');
+	
+	
+	var verdecastigando = game.add.sprite(750, 100, 'verdecastigando');
+	var walk = verdecastigando.animations.add('walk',[0,1, 2, 3], 5, true);
+	verdecastigando.animations.play('walk');
+	
+	var azulcreando = game.add.sprite(130, 380, 'azulcreando');
+	var walk = azulcreando.animations.add('walk',[0,1,2], 5, true);
+	azulcreando.animations.play('walk');
+	
+	var verdecreando = game.add.sprite(330, 420, 'verdecreando');
+	var walk = verdecreando.animations.add('walk',[0,1,2], 5, true);
+	verdecreando.animations.play('walk');
+	
+	var rojocreando = game.add.sprite(130, 280, 'rojocreando');
+	var walk = rojocreando.animations.add('walk',[0,1,2], 5, true);
+	rojocreando.animations.play('walk');
 
 
 
