@@ -250,6 +250,15 @@ function correrProcesador(recursos){
 							//Si el proceso debe continuar en ejecucion regresa a la cola de CPU
 							else{
 						//		console.log("priodidad 1");
+						if((procesoAux.nombre=="EstrellaAzul") ||(procesoAux.nombre=="DiamondAzul")||(procesoAux.nombre=="BolaAzul")){
+							muerteDiosAzul(procesoAux.posX,procesoAux.posY);
+						}
+						if((procesoAux.nombre=="EstrellaRoja") ||(procesoAux.nombre=="DiamondRojo")||(procesoAux.nombre=="BolaRoja")){
+							muerteDiosRojo(procesoAux.posX,procesoAux.posY);
+						}
+						if((procesoAux.nombre=="EstrellaVerde") ||(procesoAux.nombre=="DiamondVerde")||(procesoAux.nombre=="BolaVerde")){
+							muerteDiosVerde(procesoAux.posX,procesoAux.posY);
+						}
 								this.CPU.Listainsertar(procesoAux);
 							}
 				}
@@ -284,6 +293,18 @@ function correrProcesador(recursos){
 
 											}
 											else {
+
+												if((procesoAux.nombre=="PoscionAzul") ||(procesoAux.nombre=="VelaAzul")){
+													muerteDiosAzul2(procesoAux.posX,procesoAux.posY);
+												}
+												if((procesoAux.nombre=="PoscionRoja") ||(procesoAux.nombre=="VelaRoja")){
+													muerteDiosRojo2(procesoAux.posX,procesoAux.posY);
+												}
+												if((procesoAux.nombre=="VelaVerde") ||(procesoAux.nombre=="VelaVerde")){
+													muerteDiosVerde2(procesoAux.posX,procesoAux.posY);
+												}
+
+
 												this.CPU.Listainsertar(procesoAux);
 											}
 
@@ -294,6 +315,17 @@ function correrProcesador(recursos){
 				////PRIODIDAD DIFERENTE A 1 y 2
 										else{
 											//console.log("prioridad 2 o 3");
+
+
+																		if((procesoAux.nombre=="PolvoAzul")){
+																			muerteDiosAzul3(procesoAux.posX,procesoAux.posY);
+																		}
+																		if((procesoAux.nombre=="PolvoRojo")){
+																			muerteDiosRojo3(procesoAux.posX,procesoAux.posY);
+																		}
+																		if((procesoAux.nombre=="PolvoVerde")){
+																			muerteDiosVerde3(procesoAux.posX,procesoAux.posY);
+																		}
 
 											this.CPU.Listainsertar(procesoAux);
 										}
@@ -445,6 +477,16 @@ function correrProcesador(recursos){
 							//Si el proceso debe continuar en ejecucion regresa a la cola de CPU
 							else{
 								//alert("alert 2");
+								if((procesoAux.nombre=="EstrellaAzul") ||(procesoAux.nombre=="DiamondAzul")||(procesoAux.nombre=="BolaAzul")){
+									muerteDiosAzul(procesoAux.posX,procesoAux.posY);
+								}
+								if((procesoAux.nombre=="EstrellaRoja") ||(procesoAux.nombre=="DiamondRojo")||(procesoAux.nombre=="BolaRoja")){
+									muerteDiosRojo(procesoAux.posX,procesoAux.posY);
+								}
+								if((procesoAux.nombre=="EstrellaVerde") ||(procesoAux.nombre=="DiamondVerde")||(procesoAux.nombre=="BolaVerde")){
+									muerteDiosVerde(procesoAux.posX,procesoAux.posY);
+								}
+
 								this.CPU.Listainsertar(procesoAux);
 							}
 						}
@@ -478,6 +520,19 @@ function correrProcesador(recursos){
 
 							}
 							else {
+
+
+																				if((procesoAux.nombre=="PoscionAzul") ||(procesoAux.nombre=="VelaAzul")){
+																					muerteDiosAzul2(procesoAux.posX,procesoAux.posY);
+																				}
+																				if((procesoAux.nombre=="PoscionRoja") ||(procesoAux.nombre=="VelaRoja")){
+																					muerteDiosRojo2(procesoAux.posX,procesoAux.posY);
+																				}
+																				if((procesoAux.nombre=="VelaVerde") ||(procesoAux.nombre=="VelaVerde")){
+																					muerteDiosVerde2(procesoAux.posX,procesoAux.posY);
+																				}
+
+
 								this.CPU.Listainsertar(procesoAux);
 							}
 
@@ -488,6 +543,16 @@ function correrProcesador(recursos){
 ////PRIODIDAD DIFERENTE A 1 y 2
 						else{
 							//console.log("prioridad 2 o 3");
+
+							if((procesoAux.nombre=="PolvoAzul")){
+								muerteDiosAzul3(procesoAux.posX,procesoAux.posY);
+							}
+							if((procesoAux.nombre=="PolvoRojo")){
+								muerteDiosRojo3(procesoAux.posX,procesoAux.posY);
+							}
+							if((procesoAux.nombre=="PolvoVerde")){
+								muerteDiosVerde3(procesoAux.posX,procesoAux.posY);
+							}
 
 							this.CPU.Listainsertar(procesoAux);
 						}

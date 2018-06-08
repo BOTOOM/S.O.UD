@@ -74,12 +74,16 @@ var diosazul;
 var diosrojo;
 var diosverde;
 var diosaparicion;
+var angelazulcurando;
+var angelverdecurando;
+var angelrojocurando;
+var walk;
 
 
 
 function create() {
-	
-	
+
+
 	text = game.add.text(game.world.centerX, game.world.centerY, 'Counter: 0', { font: "64px Arial", fill: "#000000", align: "center" });
 
 	game.time.events.loop(Phaser.Timer.SECOND, updateCounter, this);
@@ -127,44 +131,46 @@ function create() {
 	 //diosazul = game.add.sprite(880, 50, 'angelazul');
 	 //diosrojo = game.add.sprite(500, 190, 'diosrojo');
 	 //diosverde = game.add.sprite(80, 50, 'diosverde');
-	var angelazulcurando = game.add.sprite(150, 150, 'angelazul');
-	var walk = angelazulcurando.animations.add('walk',[1, 2, 3], 5, true);
-	angelazulcurando.animations.play('walk');
-	
+	 angelazulcurando = game.add.sprite(150, 150, 'angelazul');
+	// walk = angelazulcurando.animations.add('walk',[1, 2, 3], 5, true);
+	///angelazulcurando.animations.play('walk');
+	 angelverdecurando = game.add.sprite(250, 150, 'angelverde');
+	 angelrojocurando = game.add.sprite(350, 150, 'angelrojo');
+	/*
 	var angelverdecurando = game.add.sprite(250, 150, 'angelverde');
 	var walk = angelverdecurando.animations.add('walk',[1, 2, 3], 5, true);
 	angelverdecurando.animations.play('walk');
-	
+
 	var angelrojocurando = game.add.sprite(350, 150, 'angelrojo');
 	var walk = angelrojocurando.animations.add('walk',[1, 2, 3], 5, true);
 	angelrojocurando.animations.play('walk');
 
-	
+
 	var azulcastigando = game.add.sprite(450, 100, 'azulcastigando');
 	var walk = azulcastigando.animations.add('walk',[0,1, 2, 3], 5, true);
 	azulcastigando.animations.play('walk');
-	
-	
+
+
 	var rojocastigando = game.add.sprite(50, 100, 'rojocastigando');
 	var walk = rojocastigando.animations.add('walk',[0,1, 2, 3], 5, true);
 	rojocastigando.animations.play('walk');
-	
-	
+
+
 	var verdecastigando = game.add.sprite(750, 100, 'verdecastigando');
 	var walk = verdecastigando.animations.add('walk',[0,1, 2, 3], 5, true);
 	verdecastigando.animations.play('walk');
-	
+
 	var azulcreando = game.add.sprite(130, 380, 'azulcreando');
 	var walk = azulcreando.animations.add('walk',[0,1,2], 5, true);
 	azulcreando.animations.play('walk');
-	
+
 	var verdecreando = game.add.sprite(330, 420, 'verdecreando');
 	var walk = verdecreando.animations.add('walk',[0,1,2], 5, true);
 	verdecreando.animations.play('walk');
-	
+
 	var rojocreando = game.add.sprite(130, 280, 'rojocreando');
 	var walk = rojocreando.animations.add('walk',[0,1,2], 5, true);
-	rojocreando.animations.play('walk');
+	rojocreando.animations.play('walk');  */
 
 
 
@@ -317,12 +323,14 @@ function create() {
 				if(choisemap[choise]=='Eazul'){
 					randomx=game.world.randomX;
 					randomy=game.world.randomY;
+					//alert("estrella:"+randomx+","+randomy);
 					CreacionProcesos("1","EstrellaAzul","PolvoEstelar","1",randomx,randomy);
 
 				}
 				if(choisemap[choise]=='Bazul'){
 					randomx=game.world.randomX;
 					randomy=game.world.randomY;
+
 					CreacionProcesos("1","BolaAzul","FactoryBall","1",randomx,randomy);
 
 				}
@@ -402,7 +410,15 @@ function update() {
 	game.physics.arcade.collide(diamanteR, platforms);
 	game.physics.arcade.collide(ballR, platforms);
 	game.physics.arcade.collide(ballG, platforms);
-    game.physics.arcade.collide(ballB, platforms);
+    game.physics.arcade.collide(posA, platforms);
+		game.physics.arcade.collide(posR, platforms);
+		game.physics.arcade.collide(posG, platforms);
+		game.physics.arcade.collide(velA, platforms);
+		game.physics.arcade.collide(velG, platforms);
+		game.physics.arcade.collide(velR, platforms);
+		game.physics.arcade.collide(polA, platforms);
+		game.physics.arcade.collide(polR, platforms);
+		game.physics.arcade.collide(polG, platforms);
 
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
@@ -414,7 +430,15 @@ function update() {
 	game.physics.arcade.overlap(player2, ballG, collectStar2, null, this);
 	game.physics.arcade.overlap(player, ballB, collectStar, null, this);
 	game.physics.arcade.overlap(player2, starsVerdes, collectStar2, null, this);
-	game.physics.arcade.overlap(player3, starsRojas, collectStar3, null, this);
+	game.physics.arcade.overlap(player, posA, collectposA, null, this);
+	game.physics.arcade.overlap(player3, posR, collectposR, null, this);
+	game.physics.arcade.overlap(player2, posG, collectposG, null, this);
+	game.physics.arcade.overlap(player, polA, collectpolA, null, this);
+	game.physics.arcade.overlap(player2, polG, collectpolG, null, this);
+	game.physics.arcade.overlap(player3, polR, collectpolR, null, this);
+	game.physics.arcade.overlap(player, velA, collectvelA, null, this);
+	game.physics.arcade.overlap(player2, velG, collectvelG, null, this);
+	game.physics.arcade.overlap(player3, velR, collectvelR, null, this);
 
     //  Reset the players velocity (movement)
     player.body.velocity.x = 0;
@@ -513,7 +537,7 @@ function update() {
         player3.body.velocity.y = -350;
     }
 		if (diosaparicion.isDown){
-			muerteDiosAzul(300,20);
+			muerteDiosAzul(500,20);
 		}
 
 
@@ -531,10 +555,13 @@ function collectStar (player, star) {
 }
 
 function muerteDiosAzul(x,y){
+//alert(""+x+","+y)
 
-
-	diosazul.kill();
-	diosazul = game.add.sprite(x,y, 'diosazul');
+	angelazulcurando.kill();
+	angelazulcurando = game.add.sprite(x,y, 'angelazul');
+		walk = angelazulcurando.animations.add('walk',[1, 2, 3], 5, true);
+	 angelazulcurando.animations.play('walk');
+	//diosazul = game.add.sprite(x,y, 'diosazul');
 
 
 }
@@ -542,17 +569,23 @@ function muerteDiosAzul(x,y){
 function muerteDiosRojo(x,y){
 
 
-	diosrojo.kill();
-	diosrojo = game.add.sprite(x,y, 'diosrojo');
+	angelrojocurando.kill();
+	angelrojocurando = game.add.sprite(x, y, 'angelrojo');
+	 walk = angelrojocurando.animations.add('walk',[1, 2, 3], 5, true);
+	angelrojocurando.animations.play('walk');iosrojo = game.add.sprite(x,y, 'diosrojo');
 
 
 }
 
 function muerteDiosVerde(x,y){
 
-
-	diosverde.kill();
-	diosverde = game.add.sprite(x,y, 'diosverde');
+angelverdecurando.kill();
+	 angelverdecurando = game.add.sprite(x, y, 'angelverde');
+	 walk = angelverdecurando.animations.add('walk',[1, 2, 3], 5, true);
+	angelverdecurando.animations.play('walk');
+//	angelazulcurando = game.add.sprite(x,y, 'angelazul');
+//	walk = angelazulcurando.animations.add('walk',[1, 2, 3], 5, true);
+ //angelazulcurando.animations.play('walk');
 
 
 }
@@ -593,5 +626,192 @@ function render() {
 
     //game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 550, 32);
     //game.debug.text("Next tick: " + game.time.events.next.toFixed(0), 32, 64);
+
+}
+
+
+function collectposA (player, posA) {
+
+    // Removes the star from the screen
+    posA.kill();
+
+    //  Add and update the score
+    scoreplayer1 -= 5;
+    scoreTextplayer1.text = 'Puntaje: ' + scoreplayer1;
+
+}
+
+function collectposG (player2, posG) {
+
+    // Removes the star from the screen
+    posG.kill();
+
+    //  Add and update the score
+    scoreplayer2 -= 5;
+    scoreTextplayer2.text = 'Puntaje: ' + scoreplayer2;
+
+}
+
+function collectposR (player3, posR) {
+
+    // Removes the star from the screen
+    posR.kill();
+
+    //  Add and update the score
+    scoreplayer3 -= 5;
+    scoreTextplayer3.text = 'Puntaje: ' + scoreplayer3;
+
+}
+
+function collectvelA (player, velA) {
+
+    // Removes the star from the screen
+    velA.kill();
+
+    //  Add and update the score
+    scoreplayer1 -= 15;
+    scoreTextplayer1.text = 'Puntaje: ' + scoreplayer1;
+
+}
+
+function collectvelG (player2, velG) {
+
+    // Removes the star from the screen
+    velG.kill();
+
+    //  Add and update the score
+    scoreplayer2 -= 15;
+    scoreTextplayer2.text = 'Puntaje: ' + scoreplayer2;
+
+}
+
+function collectvelR (player3, velR) {
+
+    // Removes the star from the screen
+    velR.kill();
+
+    //  Add and update the score
+    scoreplayer3 -= 15;
+    scoreTextplayer3.text = 'Puntaje: ' + scoreplayer3;
+
+}
+function collectpolA (player, polA) {
+
+    // Removes the star from the screen
+    polA.kill();
+
+    //  Add and update the score
+    scoreplayer2 += 2;
+    scoreTextplayer2.text = 'Puntaje: ' + scoreplayer2;
+		scoreplayer1 += 2;
+    scoreTextplayer1.text = 'Puntaje: ' + scoreplayer1;
+		scoreplayer3 += 2;
+    scoreTextplayer3.text = 'Puntaje: ' + scoreplayer3;
+}
+
+function collectpolG (player2, polG) {
+
+    // Removes the star from the screen
+    polG.kill();
+
+    //  Add and update the score
+    scoreplayer2 += 2;
+    scoreTextplayer2.text = 'Puntaje: ' + scoreplayer2;
+		scoreplayer1 += 2;
+    scoreTextplayer1.text = 'Puntaje: ' + scoreplayer1;
+		scoreplayer3 += 2;
+    scoreTextplayer3.text = 'Puntaje: ' + scoreplayer3;
+
+}
+
+function collectpolR (player3, polR) {
+
+    // Removes the star from the screen
+    polR.kill();
+
+    //  Add and update the score
+    scoreplayer2 += 2;
+    scoreTextplayer2.text = 'Puntaje: ' + scoreplayer2;
+		scoreplayer1 += 2;
+    scoreTextplayer1.text = 'Puntaje: ' + scoreplayer1;
+		scoreplayer3 += 2;
+    scoreTextplayer3.text = 'Puntaje: ' + scoreplayer3;
+}
+
+
+
+function muerteDiosAzul2(x,y){
+//alert(""+x+","+y)
+
+	angelazulcurando.kill();
+	angelazulcurando = game.add.sprite(x,y,  'azulcastigando');
+		walk = angelazulcurando.animations.add('walk',[0,1, 2, 3], 5, true);
+	 angelazulcurando.animations.play('walk');
+	//diosazul = game.add.sprite(x,y, 'diosazul');
+
+
+
+
+
+}
+
+function muerteDiosRojo2(x,y){
+
+
+	angelrojocurando.kill();
+	angelrojocurando = game.add.sprite(x, y, 'rojocastigando');
+	 walk = angelrojocurando.animations.add('walk',[0,1, 2, 3], 5, true);
+	angelrojocurando.animations.play('walk');
+
+
+}
+
+function muerteDiosVerde2(x,y){
+
+angelverdecurando.kill();
+	 angelverdecurando = game.add.sprite(x, y, 'verdecastigando');
+	 walk = angelverdecurando.animations.add('walk',[0,1, 2, 3], 5, true);
+	angelverdecurando.animations.play('walk');
+//	angelazulcurando = game.add.sprite(x,y, 'angelazul');
+//	walk = angelazulcurando.animations.add('walk',[1, 2, 3], 5, true);
+ //angelazulcurando.animations.play('walk');
+
+
+}
+
+
+function muerteDiosAzul3(x,y){
+//alert(""+x+","+y)
+
+	angelazulcurando.kill();
+	angelazulcurando = game.add.sprite(x,y,  'azulcreando');
+		walk = angelazulcurando.animations.add('walk',[0,1,2], 5, true);
+	 angelazulcurando.animations.play('walk');
+	//diosazul = game.add.sprite(x,y, 'diosazul');
+
+}
+
+function muerteDiosRojo3(x,y){
+
+
+	angelrojocurando.kill();
+	angelrojocurando = game.add.sprite(x, y, 'rojocreando');
+	 walk = angelrojocurando.animations.add('walk',[0,1,2], 5, true);
+	angelrojocurando.animations.play('walk');
+
+
+
+}
+
+function muerteDiosVerde3(x,y){
+
+angelverdecurando.kill();
+	 angelverdecurando = game.add.sprite(x, y, 'verdecreando');
+	 walk = angelverdecurando.animations.add('walk',[0,1,2], 5, true);
+	angelverdecurando.animations.play('walk');
+//	angelazulcurando = game.add.sprite(x,y, 'angelazul');
+//	walk = angelazulcurando.animations.add('walk',[1, 2, 3], 5, true);
+ //angelazulcurando.animations.play('walk');
+
 
 }

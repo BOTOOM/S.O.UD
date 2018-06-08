@@ -68,7 +68,7 @@ function ejecutarhilos(){
 		//	$("#dGantt1").html("");
 		//	pintarGantt(procesador1.estados,"#dGantt1");
 
-	},1000);
+	},1500);
 
 	hilo2 = setInterval(function(){
 			procesador2.CorrerProcesador(arregloRecursos);
@@ -84,7 +84,7 @@ function ejecutarhilos(){
 			procesador2.CalcularRendimiento();
 	//		$("#dGantt2").html("");
 	//		pintarGantt(procesador2.estados,"#dGantt2");
-},1000);
+},1500);
 		hilo3 = setInterval(function(){
 			procesador3.CorrerProcesador(arregloRecursos);
 		//	$("#listos3").html(dibujarCola(procesador3.listos));
@@ -99,7 +99,7 @@ function ejecutarhilos(){
 			procesador3.CalcularRendimiento();
 	//		$("#dGantt3").html("");
 	//		pintarGantt(procesador3.estados,"#dGantt3");
-},1000);
+},1500);
 }
 //Detener los procesadores
 /*

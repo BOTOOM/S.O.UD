@@ -61,7 +61,7 @@ function CreacionProcesos(nProcesador, noProceso,recu,prio ,poX, poY) {
 	var posicionX = poX;
 	var posicionY = poY;
 	var valPrioridad = prio;
-
+//alert("crea:"+posicionX+","+posicionY);
 	if (numProcesador == "1") {
 		var proceso = new nodoProceso(contador1, nomProceso, tiempoProceso, recurso, valPrioridad, posicionX, posicionY);
 		procesador1.CrearProceso(proceso);
@@ -70,7 +70,7 @@ function CreacionProcesos(nProcesador, noProceso,recu,prio ,poX, poY) {
 			procesador1.listos.ListaOrdenarPrioridad();;
 			procesador1.listos.ListaOrdenarTiempo();
 		//	$("#listos1").html(dibujarCola(procesador1.listos));
-	}, 1000);
+	}, 500);
 		//$("#listos1").html(dibujarCola(procesador1.listos));
 
 	} else{
@@ -82,7 +82,7 @@ function CreacionProcesos(nProcesador, noProceso,recu,prio ,poX, poY) {
 				procesador2.listos.ListaOrdenarPrioridad();;
 				procesador2.listos.ListaOrdenarTiempo();
 			//	$("#listos1").html(dibujarCola(procesador1.listos));
-		}, 1000);
+		}, 500);
 			//$("#listos2").html(dibujarCola(procesador2.listos));
 		}else{
 			var proceso = new nodoProceso(contador3, nomProceso, tiempoProceso, recurso, valPrioridad, posicionX, posicionY);
@@ -92,7 +92,7 @@ function CreacionProcesos(nProcesador, noProceso,recu,prio ,poX, poY) {
 				procesador3.listos.ListaOrdenarPrioridad();;
 				procesador3.listos.ListaOrdenarTiempo();
 			//	$("#listos1").html(dibujarCola(procesador1.listos));
-		}, 1000);
+		}, 500);
 			//$("#listos3").html(dibujarCola(procesador3.listos));
 		}
 	}
