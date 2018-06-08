@@ -1,11 +1,11 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update, render:render });
+var game = new Phaser.Game(1000, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update, render:render });
 
-var w = 800, h = 600;
+var w = 1000, h = 600;
 
 
 function preload() {
 	game.canvas.id="CanvasGame";
-    game.load.image('sky', 'assets/montain.png');
+    game.load.image('sky', 'assets/montain3.png');
 	game.load.image('menu','assets/number-buttons-90x90.png', 270, 180);
     game.load.image('ground', 'assets/platform.png');
     game.load.image('starA', 'assets/starA.png');
@@ -19,6 +19,9 @@ function preload() {
 	game.load.image('diamond', 'assets/diamond.png');
     game.load.spritesheet('dude', 'assets/blue.png', 32, 48);game.load.spritesheet('green', 'assets/green.png', 32, 48);
 	game.load.spritesheet('rose', 'assets/fma.png', 21, 32);
+	game.load.image('diosverde', 'assets/diosverde.png');
+    game.load.image('diosrojo', 'assets/diosrojo.png');
+	 game.load.image('diosazul', 'assets/diosazul.png');
 
 
 
@@ -45,6 +48,9 @@ var scoreplayer3 = 0;
 var scoreTextPlayer1;
 var scoreTextPlayer2;
 var scoreTextPlayer3;
+var diosazul;
+var diosrojo;
+var diosverde;
 
 
 
@@ -79,20 +85,26 @@ function create() {
     var ledge = platforms.create(400, 400, 'ground');
     ledge.body.immovable = true;
 
-	var ledge = platforms.create(180, 120, 'ground');
+	var ledge = platforms.create(150, 100, 'ground');
     ledge.body.immovable = true;
 
-    ledge = platforms.create(-150, 250, 'ground');
+    ledge = platforms.create(-430, 250, 'ground');
     ledge.body.immovable = true;
 
 
-    ledge = platforms.create(650, 220, 'ground');
+    ledge = platforms.create(690, 220, 'ground');
     ledge.body.immovable = true;
 
     // The player and its settings
     player = game.add.sprite(32, game.world.height - 150, 'dude');
 	player3 = game.add.sprite(142, game.world.height - 150, 'rose');
 	player2 = game.add.sprite(272, game.world.height - 150, 'green');
+	 diosazul = game.add.sprite(880, 50, 'diosazul');
+	 diosrojo = game.add.sprite(500, 190, 'diosrojo');
+	 diosverde = game.add.sprite(80, 50, 'diosverde');
+	
+	
+		
 
     //  We need to enable physics on the player
     game.physics.arcade.enable(player);
@@ -156,6 +168,7 @@ function create() {
 	izq = game.input.keyboard.addKey(Phaser.Keyboard.G);
 	arr = game.input.keyboard.addKey(Phaser.Keyboard.Y);
 	der = game.input.keyboard.addKey(Phaser.Keyboard.J);
+	diosaparicion=game.input.keyboard.addKey(Phaser.keyboard.N);
 
 
 	    /*
@@ -298,7 +311,7 @@ function update() {
 	game.physics.arcade.collide(ballR, platforms);
 	game.physics.arcade.collide(ballG, platforms);
     game.physics.arcade.collide(ballB, platforms);
-
+	
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
@@ -315,6 +328,8 @@ function update() {
     player.body.velocity.x = 0;
 	player2.body.velocity.x = 0;
 	player3.body.velocity.x = 0;
+	
+	
 
     if (cursors.left.isDown)
     {
@@ -329,6 +344,7 @@ function update() {
         player.body.velocity.x = 150;
 
         player.animations.play('right');
+		
     }
     else
     {
@@ -344,6 +360,8 @@ function update() {
         player.body.velocity.y = -350;
     }
 //controles para player 2
+
+
 
 	if (izquierda.isDown)
     {
@@ -418,7 +436,15 @@ function collectStar (player, star) {
 
 }
 
-
+function muerteDiosAzul(x,y){
+	
+	if (diosaparicion.isDown)
+    {
+	diosazul.kill();
+	diosazul = game.add.sprite(x, y, 'diosazul');
+	}
+		
+}
 
 
 
