@@ -34,6 +34,9 @@ function CreatorRecur(){
 	crearRecurso("PolvoEstelar");
 	crearRecurso("MinnerDiamond");
 	crearRecurso("FactoryBall");
+	crearRecurso("ALquimia");
+	crearRecurso("Cera");
+	crearRecurso("Magic");
 }
 
 

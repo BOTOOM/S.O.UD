@@ -29,7 +29,7 @@ function crearProceso(proceso){
 	this.estados[proceso.id] = [];
 }
 
-//Funcion del algoritmo Round Robin
+//Algoritmo Apropiativo con Prioridad
 function correrProcesador(recursos){
 	this.cronometro++;
 	//Revisión de los procesos en la cola de suspendidos, aquí se decide si siguen en suspendidos o pasan a listos
@@ -89,92 +89,305 @@ function correrProcesador(recursos){
 	//Si hay algo en ejecucion en CPU
 	if(!this.CPU.Listavacia()){
 		var procesoAux = this.CPU.Listaatender();
-		procesoAux.tiempo --;
-		procesoAux.qRestante --;
-		//Si no le queda tiempo de ejecución al proceso va a la cola de terminados
-		if(procesoAux.tiempo == 0){
-		
-			if(procesoAux.nombre=="EstrellaAzul"){
-				randomx=game.world.randomX;
-				randomy=game.world.randomY;
-				var starAzul = stars.create(randomx,randomy,'starA');
-				
-				
-				 
-					//starAzul.body.gravity.y = 30;
-					//starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
-					
-
-					}
-			if(procesoAux.nombre=="EstrellaRoja"){
-				var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
-				//  Let gravity do its thing
-				//	starRoja.body.gravity.y = 30;
-					//  This just gives each star a slightly random bounce value
-					//starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-			if(procesoAux.nombre=="EstrellaVerde"){
-				var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
-					//starVerde.body.gravity.y = 30;
-					//starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-			if(procesoAux.nombre=="BolaAzul"){
-				var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
-				//bazul.body.gravity.y = 30;
-				//bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-			if(procesoAux.nombre=="BolaVerde"){
-				var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
-				//bverde.body.gravity.y = 30;
-				//bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-			if(procesoAux.nombre=="BolaRoja"){
-				var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
-				//brosa.body.gravity.y = 30;
-				//brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-			if(procesoAux.nombre=="DiamondRojo"){
-				var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
-				//drosa.body.gravity.y = 30;
-				//drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-			if(procesoAux.nombre=="DiamondAzul"){
-				var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
-				//dazul.body.gravity.y = 30;
-				//dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-			if(procesoAux.nombre=="Dverde"){
-				var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
-				//dverde.body.gravity.y = 30;
-				//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
-			}
-
-			
-			//Buscar el recurso y liberarlo
-			for(var i in recursos){
-				if(recursos[i].nombre == procesoAux.recurso){
-					recursos[i].estado = 1;
-					break;
-				}
-			}
-			this.terminados.Listainsertar(procesoAux);
-		}
-		else{
-			//Si no le queda tiempo de quantum al proceso ( va para la cola de suspendido )
-			if(procesoAux.qRestante == 0){
-				//Buscar el recurso y liberarlo
+		var procesoAuxListos = this.listos.ListagetRaiz();
+		//verifica si hay algo en la cola de listos
+		if (!this.listos.Listavacia()) {
+			if(parseInt(procesoAux.prioridad) > parseInt(procesoAuxListos.proceso.prioridad)){
+				/* buscar el recurso y liberarlo */
 				for(var i in recursos){
 					if(recursos[i].nombre == procesoAux.recurso){
 						recursos[i].estado = 1;
 						break;
 					}
 				}
-				procesoAux.qRestante = parseInt(Math.floor((Math.random()*procesoAux.qRestante)+2)); //  Tiempo de duración en espera en suspendido
+				procesoAux.qRestante = 3; //Calculo del quamtum en la cola de suspendido
+				//inserta en la cola de suspendido
 				this.suspendidos.Listainsertar(procesoAux);
 			}
-			//Si el proceso debe continuar en ejecucion regresa a la cola de CPU
 			else{
-				this.CPU.Listainsertar(procesoAux);
+				procesoAux.tiempo --;
+				procesoAux.qRestante --;
+				//Si el procesador ya no tiene tiempo de ejecución va a la cola de terminados
+
+				if(procesoAux.tiempo == 0){
+					//Buscar y liberar el recurso
+
+						if(procesoAux.nombre=="EstrellaAzul"){
+							randomx=game.world.randomX;
+							randomy=game.world.randomY;
+							var starAzul = stars.create(randomx,randomy,'starA');
+
+
+
+								//starAzul.body.gravity.y = 30;
+								//starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
+
+
+								}
+						if(procesoAux.nombre=="EstrellaRoja"){
+							var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
+							//  Let gravity do its thing
+							//	starRoja.body.gravity.y = 30;
+								//  This just gives each star a slightly random bounce value
+								//starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="EstrellaVerde"){
+							var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
+								//starVerde.body.gravity.y = 30;
+								//starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="BolaAzul"){
+							var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
+							//bazul.body.gravity.y = 30;
+							//bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="BolaVerde"){
+							var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
+							//bverde.body.gravity.y = 30;
+							//bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="BolaRoja"){
+							var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
+							//brosa.body.gravity.y = 30;
+							//brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="DiamondRojo"){
+							var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
+							//drosa.body.gravity.y = 30;
+							//drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="DiamondAzul"){
+							var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
+							//dazul.body.gravity.y = 30;
+							//dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="Dverde"){
+							var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+
+
+						//Buscar el recurso y liberarlo
+						for(var i in recursos){
+							if(recursos[i].nombre == procesoAux.recurso){
+								recursos[i].estado = 1;
+								break;
+							}
+						}
+						this.terminados.Listainsertar(procesoAux);
+				}
+				else{
+					// Si el quantum no le queda tiempo ( va para la cola de suspendido )
+
+				if(procesoAux.prioridad == 1){
+					//alert("que wea");
+					//console.log("priodidad 1.1");
+							if(procesoAux.qRestante == 0){
+								//Buscar y liberar el recurso
+								for(var i in recursos){
+									if(recursos[i].nombre == procesoAux.recurso){
+										recursos[i].estado = 1;
+										break;
+									}
+								}
+								procesoAux.qRestante = 2; //  este tiempo es el que va a durar en espera en suspendido
+								this.suspendidos.Listainsertar(procesoAux);
+							}
+							//Si el proceso debe continuar en ejecucion regresa a la cola de CPU
+							else{
+						//		console.log("priodidad 1");
+								this.CPU.Listainsertar(procesoAux);
+							}
+				}
+
+				///priodidad 2---------------------
+										else if(procesoAux.prioridad == 2){
+											if (this.listos.Listavacia()) {
+												///	alert("no hay siguiente en listos");
+												var proTempo=1000;
+												var proPrio = 4;
+											}
+											else {
+											//	alert("si hay siguiente");
+											var proTempo= this.listos.ListagetRaiz().proceso.tiempo;	// estas instrucciones no se ejecutan
+											var proPrio = this.listos.ListagetRaiz().proceso.prioridad;
+											}
+
+
+											if((proTempo < procesoAux.tiempo)&& (proPrio==2)){
+												//alert("exite uno menor")
+												//alert(proTempo)
+												//Buscar el recurso y liberarlo
+												for(var i in recursos){
+													if(recursos[i].nombre == procesoAux.recurso){
+														recursos[i].estado = 1;
+														//alert("El recurso: " + recursos[i].nombre + " ha sido liberado");
+														break;
+													}
+												}
+												procesoAux.qRestante = parseInt(Math.floor((Math.random()+2))); //  Tiempo de duración en espera en suspendido
+												this.suspendidos.Listainsertar(procesoAux);
+
+											}
+											else {
+												this.CPU.Listainsertar(procesoAux);
+											}
+
+
+										}
+
+
+				////PRIODIDAD DIFERENTE A 1 y 2
+										else{
+											//console.log("prioridad 2 o 3");
+
+											this.CPU.Listainsertar(procesoAux);
+										}
+
+
+				}
+
+			}
+		}
+		else{
+			procesoAux.tiempo --;
+			procesoAux.qRestante --;
+			//Si el procesador ya no tiene tiempo de ejecución va a la cola de terminados
+			if(procesoAux.tiempo == 0){
+				//Buscar y liberar el recurso
+
+					if(procesoAux.nombre=="EstrellaAzul"){
+						randomx=game.world.randomX;
+						randomy=game.world.randomY;
+						var starAzul = stars.create(randomx,randomy,'starA');
+
+
+
+							//starAzul.body.gravity.y = 30;
+							//starAzul.body.bounce.y = 0.7 + Math.random() * 0.2;
+
+
+							}
+					if(procesoAux.nombre=="EstrellaRoja"){
+						var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
+						//  Let gravity do its thing
+						//	starRoja.body.gravity.y = 30;
+							//  This just gives each star a slightly random bounce value
+							//starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="EstrellaVerde"){
+						var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
+							//starVerde.body.gravity.y = 30;
+							//starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="BolaAzul"){
+						var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
+						//bazul.body.gravity.y = 30;
+						//bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="BolaVerde"){
+						var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
+						//bverde.body.gravity.y = 30;
+						//bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="BolaRoja"){
+						var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
+						//brosa.body.gravity.y = 30;
+						//brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="DiamondRojo"){
+						var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
+						//drosa.body.gravity.y = 30;
+						//drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="DiamondAzul"){
+						var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
+						//dazul.body.gravity.y = 30;
+						//dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="Dverde"){
+						var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+
+
+					//Buscar el recurso y liberarlo
+					for(var i in recursos){
+						if(recursos[i].nombre == procesoAux.recurso){
+							recursos[i].estado = 1;
+							break;
+						}
+					}
+					this.terminados.Listainsertar(procesoAux);
+			}
+			else{
+				// Si el quantum no le queda tiempo ( va para la cola de suspendido )
+
+				if(procesoAux.prioridad == 1){
+							if(procesoAux.qRestante == 0){
+								//Buscar y liberar el recurso
+								for(var i in recursos){
+									if(recursos[i].nombre == procesoAux.recurso){
+										recursos[i].estado = 1;
+										break;
+									}
+								}
+								procesoAux.qRestante = 2; //  este tiempo es el que va a durar en espera en suspendido
+								this.suspendidos.Listainsertar(procesoAux);
+							}
+							//Si el proceso debe continuar en ejecucion regresa a la cola de CPU
+							else{
+								//alert("alert 2");
+								this.CPU.Listainsertar(procesoAux);
+							}
+						}
+///priodidad 2---------------------
+						else if(procesoAux.prioridad == 2){
+							if (this.listos.Listavacia()) {
+									//alert("no hay siguiente en listos");
+									var proTempo=1000;
+									var proPrio = 4;
+							}
+							else {
+								//alert("si hay siguiente");
+									var proTempo= this.listos.ListagetRaiz().proceso.tiempo;	// estas instrucciones no se ejecutan
+									var proPrio = this.listos.ListagetRaiz().proceso.prioridad;
+							}
+
+
+							if((proTempo < procesoAux.tiempo) && (proPrio==2) ){
+							//	alert("exite uno menor")
+							//	alert(proTempo)
+								//Buscar el recurso y liberarlo
+								for(var i in recursos){
+									if(recursos[i].nombre == procesoAux.recurso){
+										recursos[i].estado = 1;
+							//			alert("El recurso: " + recursos[i].nombre + " ha sido liberado");
+										break;
+									}
+								}
+								procesoAux.qRestante = parseInt(Math.floor((Math.random()+2))); //  Tiempo de duración en espera en suspendido
+								this.suspendidos.Listainsertar(procesoAux);
+
+							}
+							else {
+								this.CPU.Listainsertar(procesoAux);
+							}
+
+
+						}
+
+
+////PRIODIDAD DIFERENTE A 1 y 2
+						else{
+							//console.log("prioridad 2 o 3");
+
+							this.CPU.Listainsertar(procesoAux);
+						}
+
+
 			}
 		}
 	}
@@ -190,11 +403,12 @@ function correrProcesador(recursos){
 				if(recursos[i].nombre == procesoAux.recurso){
 					//Si el recurso esta disponible
 					if(recursos[i].estado == 1){
+					//	alert("alert 3");
 						this.CPU.Listainsertar(procesoAux);
 						recursos[i].estado = 0;
 					}//Si el recurso no esta disponible
 					else{
-						procesoAux.qRestante = parseInt(Math.floor((Math.random()*procesoAux.qRestante)+2)); // este tiempo es el que va a durar en espera en bloqueados
+						procesoAux.qRestante = 2; // este tiempo es el que va a durar en espera en bloqueados
 						this.bloqueados.Listainsertar(procesoAux);
 					}
 					break;
@@ -208,7 +422,7 @@ function correrProcesador(recursos){
 function detenerProcesador(recursos){
 	if(!this.CPU.Listavacia()){
 		var procesoAux = this.CPU.Listaatender();
-		procesoAux.qRestante = parseInt(Math.floor((Math.random()*procesoAux.qRestante)+2)); //  este tiempo es el que va a durar en espera en suspendidos
+		procesoAux.qRestante = 2; //  este tiempo es el que va a durar en espera en suspendidos
 		this.suspendidos.Listainsertar(procesoAux);
 		//Buscar el recurso y liberarlo
 		for(var i in recursos){

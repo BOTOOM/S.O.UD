@@ -59,6 +59,10 @@ function ejecutarhilos(){
 		//	$("#bloqueados1").html(dibujarCola(procesador1.bloqueados));
 		//	$("#terminados1").html(dibujarCola(procesador1.terminados));
 		//	$("#cpu1").html(dibujarCola(procesador1.CPU));
+		setTimeout(function(){
+			procesador1.listos.ListaOrdenarPrioridad();
+			procesador1.listos.ListaOrdenarTiempo();
+		}, 500);
 			$("#tiempoEjecucion").text(procesador1.cronometro);
 			procesador1.CalcularRendimiento();
 		//	$("#dGantt1").html("");
@@ -73,6 +77,10 @@ function ejecutarhilos(){
 	//		$("#bloqueados2").html(dibujarCola(procesador2.bloqueados));
 	//		$("#terminados2").html(dibujarCola(procesador2.terminados));
 		//	$("#cpu2").html(dibujarCola(procesador2.CPU));
+		setTimeout(function(){
+			procesador2.listos.ListaOrdenarPrioridad();
+			procesador2.listos.ListaOrdenarTiempo();
+		}, 500);
 			procesador2.CalcularRendimiento();
 	//		$("#dGantt2").html("");
 	//		pintarGantt(procesador2.estados,"#dGantt2");
@@ -84,6 +92,10 @@ function ejecutarhilos(){
 		//	$("#bloqueados3").html(dibujarCola(procesador3.bloqueados));
 		//	$("#terminados3").html(dibujarCola(procesador3.terminados));
 		//	$("#cpu3").html(dibujarCola(procesador3.CPU));
+		setTimeout(function(){
+			procesador3.listos.ListaOrdenarPrioridad();
+			procesador3.listos.ListaOrdenarTiempo();
+		}, 500);
 			procesador3.CalcularRendimiento();
 	//		$("#dGantt3").html("");
 	//		pintarGantt(procesador3.estados,"#dGantt3");

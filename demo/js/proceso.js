@@ -1,5 +1,5 @@
 //Funcion para recibir los valores del nodo proceso
-function nodoProceso(idProceso, nomProceso, tiempoVidaProceso, recurso){
+function nodoProceso(idProceso, nomProceso, tiempoVidaProceso, recurso, priority){
 	this.id = idProceso;
 	this.nombre = nomProceso;
 	this.tiempo = tiempoVidaProceso;
@@ -7,6 +7,7 @@ function nodoProceso(idProceso, nomProceso, tiempoVidaProceso, recurso){
 	this.quantumRestante;
 	this.recurso = recurso;
 	this.t = tiempoVidaProceso;
+	this.prioridad = priority;
 }
 
 //Variables de cada procesador
@@ -14,7 +15,7 @@ var procesador1 = new Procesador();
 var procesador2 = new Procesador();
 var procesador3 = new Procesador();
 //Contadores para cada procesador
-var contador1=0, contador2=0, contador3=0;
+var contador1=0, contador2=0, contador3=0; contNom=0;
 /*
 //Creación de procesos
 $(document).ready(function(){
@@ -57,22 +58,37 @@ function CreacionProcesos(nProcesador, noProceso,recu) {
 	var recurso= recu;
 
 	if (numProcesador == "1") {
-		var proceso = new nodoProceso(contador1, nomProceso, tiempoProceso, recurso);
+		var proceso = new nodoProceso(contador1, nomProceso, tiempoProceso, recurso, valPrioridad);
 		procesador1.CrearProceso(proceso);
 		contador1++;
-		$("#listos1").html(dibujarCola(procesador1.listos));
+		setTimeout(function(){
+			procesador1.listos.ListaOrdenarPrioridad();;
+			procesador1.listos.ListaOrdenarTiempo();
+		//	$("#listos1").html(dibujarCola(procesador1.listos));
+	}, 1000);
+		//$("#listos1").html(dibujarCola(procesador1.listos));
 
 	} else{
 		if (numProcesador == "2") {
 			var proceso = new nodoProceso(contador2, nomProceso, tiempoProceso, recurso);
 			procesador2.CrearProceso(proceso);
 			contador2++;
-			$("#listos2").html(dibujarCola(procesador2.listos));
+			setTimeout(function(){
+				procesador2.listos.ListaOrdenarPrioridad();;
+				procesador2.listos.ListaOrdenarTiempo();
+			//	$("#listos1").html(dibujarCola(procesador1.listos));
+		}, 1000);
+			//$("#listos2").html(dibujarCola(procesador2.listos));
 		}else{
 			var proceso = new nodoProceso(contador3, nomProceso, tiempoProceso, recurso);
 			procesador3.CrearProceso(proceso);
 			contador3++;
-			$("#listos3").html(dibujarCola(procesador3.listos));
+			setTimeout(function(){
+				procesador3.listos.ListaOrdenarPrioridad();;
+				procesador3.listos.ListaOrdenarTiempo();
+			//	$("#listos1").html(dibujarCola(procesador1.listos));
+		}, 1000);
+			//$("#listos3").html(dibujarCola(procesador3.listos));
 		}
 	}
 }
