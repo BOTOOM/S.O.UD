@@ -207,3 +207,60 @@ body{
   top:  620px;
   left: 20px;
 }
+
+
+#BombaAzul{
+  position: absolute;
+  top:  620px;
+  left: 530px;
+
+}
+#BombaRoja{
+
+  position: absolute;
+  top:  620px;
+  left: 630px;
+}
+#BombaVerde{
+  position: absolute;
+  top:  620px;
+  left: 730px;
+
+}
+#FuegoAzul{
+
+  position: absolute;
+  top:  650px;
+  left: 530px;
+}
+#FuegoRojo{
+
+  position: absolute;
+  top:  650px;
+  left: 630px;
+}
+#FuegoVerde{
+  position: absolute;
+  top:  650px;
+  left: 730px;
+
+}
+
+#PolvoAzul{
+
+  position: absolute;
+  top:  680px;
+  left: 530px;
+}
+#PolvoRojo{
+
+  position: absolute;
+  top:  680px;
+  left: 630px;
+}
+#PolvoVerde{
+  position: absolute;
+  top:  680px;
+  left: 730px;
+
+}

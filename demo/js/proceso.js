@@ -124,3 +124,16 @@ function valoresDefecto(){
 	$("#nombreProceso").val("Proceso "+contador);
 	$("#tiempo").val(0);
 }
+
+function CrearPosciones(tipo){
+//alert("pos" + tipo);
+
+}
+
+function CrearVelas(tipo) {
+
+}
+
+function CearPolvo(tipo) {
+
+}

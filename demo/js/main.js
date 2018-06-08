@@ -54,10 +54,10 @@ $(document).ready(function(){
 function ejecutarhilos(){
 	hilo1 = setInterval(function(){
 			procesador1.CorrerProcesador(arregloRecursos);
-			$("#listos1").html(dibujarCola(procesador1.listos));
-			$("#suspendidos1").html(dibujarCola(procesador1.suspendidos));
-			$("#bloqueados1").html(dibujarCola(procesador1.bloqueados));
-			$("#terminados1").html(dibujarCola(procesador1.terminados));
+		//	$("#listos1").html(dibujarCola(procesador1.listos));
+		//	$("#suspendidos1").html(dibujarCola(procesador1.suspendidos));
+		//	$("#bloqueados1").html(dibujarCola(procesador1.bloqueados));
+		//	$("#terminados1").html(dibujarCola(procesador1.terminados));
 		//	$("#cpu1").html(dibujarCola(procesador1.CPU));
 			$("#tiempoEjecucion").text(procesador1.cronometro);
 			procesador1.CalcularRendimiento();
@@ -68,10 +68,10 @@ function ejecutarhilos(){
 
 	hilo2 = setInterval(function(){
 			procesador2.CorrerProcesador(arregloRecursos);
-			$("#listos2").html(dibujarCola(procesador2.listos));
-			$("#suspendidos2").html(dibujarCola(procesador2.suspendidos));
-			$("#bloqueados2").html(dibujarCola(procesador2.bloqueados));
-			$("#terminados2").html(dibujarCola(procesador2.terminados));
+	//		$("#listos2").html(dibujarCola(procesador2.listos));
+	//		$("#suspendidos2").html(dibujarCola(procesador2.suspendidos));
+	//		$("#bloqueados2").html(dibujarCola(procesador2.bloqueados));
+	//		$("#terminados2").html(dibujarCola(procesador2.terminados));
 		//	$("#cpu2").html(dibujarCola(procesador2.CPU));
 			procesador2.CalcularRendimiento();
 	//		$("#dGantt2").html("");
@@ -79,10 +79,10 @@ function ejecutarhilos(){
 },1000);
 		hilo3 = setInterval(function(){
 			procesador3.CorrerProcesador(arregloRecursos);
-			$("#listos3").html(dibujarCola(procesador3.listos));
-			$("#suspendidos3").html(dibujarCola(procesador3.suspendidos));
-			$("#bloqueados3").html(dibujarCola(procesador3.bloqueados));
-			$("#terminados3").html(dibujarCola(procesador3.terminados));
+		//	$("#listos3").html(dibujarCola(procesador3.listos));
+		//	$("#suspendidos3").html(dibujarCola(procesador3.suspendidos));
+		//	$("#bloqueados3").html(dibujarCola(procesador3.bloqueados));
+		//	$("#terminados3").html(dibujarCola(procesador3.terminados));
 		//	$("#cpu3").html(dibujarCola(procesador3.CPU));
 			procesador3.CalcularRendimiento();
 	//		$("#dGantt3").html("");
