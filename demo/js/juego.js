@@ -17,11 +17,15 @@ function preload() {
 	 game.load.image('diamondG', 'assets/diamondG.png');
 	  game.load.image('diamondR', 'assets/diamondR.png');
 	game.load.image('diamond', 'assets/diamond.png');
-    game.load.spritesheet('dude', 'assets/blue.png', 32, 48);game.load.spritesheet('green', 'assets/green.png', 32, 48);
+    game.load.spritesheet('dude', 'assets/blue.png', 32, 48);
+	game.load.spritesheet('green', 'assets/green.png', 32, 48);
 	game.load.spritesheet('rose', 'assets/fma.png', 21, 32);
-	game.load.image('diosverde', 'assets/diosverde.png');
-    game.load.image('diosrojo', 'assets/diosrojo.png');
-	 game.load.image('diosazul', 'assets/diosazul.png');
+	//game.load.image('diosverde', 'assets/diosverde.png');
+    //game.load.image('diosrojo', 'assets/diosrojo.png');
+	 //game.load.image('diosazul', 'assets/diosazul.png');
+	 game.load.spritesheet('diosverde', 'assets/diosverde.png',32,48);
+    game.load.spritesheet('diosrojo', 'assets/diosrojo.png',32,48);
+	 game.load.spritesheet('angelazul', 'assets/angelazulcurando.png',32,48);
 
 
 
@@ -100,9 +104,10 @@ function create() {
     player = game.add.sprite(32, game.world.height - 150, 'dude');
 	player3 = game.add.sprite(142, game.world.height - 150, 'rose');
 	player2 = game.add.sprite(272, game.world.height - 150, 'green');
-	 diosazul = game.add.sprite(880, 50, 'diosazul');
+	 diosazul = game.add.sprite(880, 50, 'angelazul');
 	 diosrojo = game.add.sprite(500, 190, 'diosrojo');
 	 diosverde = game.add.sprite(80, 50, 'diosverde');
+
 
 
 
@@ -132,6 +137,7 @@ function create() {
     player2.animations.add('right', [5, 6, 7, 8], 10, true);
 	player3.animations.add('left', [0, 1, 2], 10, true);
     player3.animations.add('right', [4, 5, 6], 10, true);
+	
 
     //  Finally some stars to collect
     stars = game.add.group();
@@ -448,6 +454,23 @@ function muerteDiosAzul(x,y){
 
 }
 
+function muerteDiosRojo(x,y){
+
+
+	diosrojo.kill();
+	diosrojo = game.add.sprite(x,y, 'diosrojo');
+
+
+}
+
+function muerteDiosVerde(x,y){
+
+
+	diosverde.kill();
+	diosverde = game.add.sprite(x,y, 'diosverde');
+
+
+}
 
 
 function collectStar2 (player2, starVerde) {
