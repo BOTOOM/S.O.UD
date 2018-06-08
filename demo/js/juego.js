@@ -17,6 +17,15 @@ function preload() {
 	 game.load.image('diamondG', 'assets/diamondG.png');
 	  game.load.image('diamondR', 'assets/diamondR.png');
 	game.load.image('diamond', 'assets/diamond.png');
+	game.load.image('posRed', 'assets/PoscionRoja.png');
+	game.load.image('posBlue', 'assets/PoscionAzul.png');
+	game.load.image('posGreen', 'assets/PoscionVerde.png');
+	game.load.image('polRed', 'assets/PolvoRojo.png');
+	game.load.image('polBlue', 'assets/PolvoAzul.png');
+	game.load.image('polGreen', 'assets/PolvoVerde.png');
+	game.load.image('velRed', 'assets/VelaRoja.png');
+	game.load.image('velBlue', 'assets/VelaAzul.png');
+	game.load.image('velGreen', 'assets/VelaVerde.png');
     game.load.spritesheet('dude', 'assets/blue.png', 32, 48);
 	game.load.spritesheet('green', 'assets/green.png', 32, 48);
 	game.load.spritesheet('rose', 'assets/fma.png', 21, 32);
@@ -149,6 +158,15 @@ function create() {
 	ballR= game.add.group();
 	ballG= game.add.group();
 	ballB= game.add.group();
+	posA= game.add.group();
+	posG = game.add.group();
+	posR = game.add.group();
+	velA = game.add.group();
+	velG = game.add.group();
+	velR = game.add.group();
+	polA = game.add.group();
+	polG = game.add.group();
+	polR = game.add.group();
 
 
     //  We will enable physics for any star that is created in this group
@@ -161,6 +179,15 @@ function create() {
 	ballR.enableBody = true;
 	ballG.enableBody = true;
 	ballB.enableBody = true;
+	posA.enableBody = true;
+	posG.enableBody = true;
+	posR.enableBody = true;
+	velA.enableBody = true;
+	velG.enableBody = true;
+	velR.enableBody = true;
+	polA.enableBody = true;
+	polG.enableBody = true;
+	polR.enableBody = true;
 
     //  The score
     scoreTextplayer1 = game.add.text(16, 16, 'Puntaje: 0', { fontSize: '32px', fill: '#2700eb' });

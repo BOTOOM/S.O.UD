@@ -148,13 +148,40 @@ function valoresDefecto(){
 
 function CrearPosciones(tipo){
 //alert("pos" + tipo);
-
+	if(tipo=="1"){
+		randomx=game.world.randomX;
+		randomy=game.world.randomY;
+		CreacionProcesos("1","PoscionAzul","ALquimia","2",randomx,randomy);
+		//alert("1");
+	}
+	else if(tipo=="2"){
+		//alert("2");
+	}
+	else{
+	//	alert("3");
+	}
 }
 
 function CrearVelas(tipo) {
-
+	if(tipo=="1"){
+		//alert("1");
+	}
+	else if(tipo=="2"){
+		//alert("2");
+	}
+	else{
+		//alert("3");
+	}
 }
 
 function CearPolvo(tipo) {
-
+	if(tipo=="1"){
+		//alert("1");
+	}
+	else if(tipo=="2"){
+	//	alert("2");
+	}
+	else{
+//		alert("3");
+	}
 }

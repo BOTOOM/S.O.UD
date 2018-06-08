@@ -113,9 +113,9 @@ function correrProcesador(recursos){
 					//Buscar y liberar el recurso
 
 						if(procesoAux.nombre=="EstrellaAzul"){
-							randomx=game.world.randomX;
-							randomy=game.world.randomY;
-							var starAzul = stars.create(randomx,randomy,'starA');
+						//	randomx=game.world.randomX;
+						//	randomy=game.world.randomY;
+							var starAzul = stars.create(procesoAux.posX,procesoAux.posY,'starA');
 
 
 
@@ -125,44 +125,50 @@ function correrProcesador(recursos){
 
 								}
 						if(procesoAux.nombre=="EstrellaRoja"){
-							var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
+							var starRoja = starsRojas.create(procesoAux.posX,procesoAux.posY,'starR');
 							//  Let gravity do its thing
 							//	starRoja.body.gravity.y = 30;
 								//  This just gives each star a slightly random bounce value
 								//starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="EstrellaVerde"){
-							var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
+							var starVerde = starsVerdes.create(procesoAux.posX,procesoAux.posY,'starG');
 								//starVerde.body.gravity.y = 30;
 								//starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="BolaAzul"){
-							var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
+							var bazul = ballB.create(procesoAux.posX,procesoAux.posY, 'blueball');
 							//bazul.body.gravity.y = 30;
 							//bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="BolaVerde"){
-							var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
+							var bverde = ballG.create(procesoAux.posX,procesoAux.posY, 'greenball');
 							//bverde.body.gravity.y = 30;
 							//bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="BolaRoja"){
-							var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
+							var brosa = ballR.create(procesoAux.posX,procesoAux.posY, 'redball');
 							//brosa.body.gravity.y = 30;
 							//brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="DiamondRojo"){
-							var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
+							var drosa = diamanteR.create(procesoAux.posX,procesoAux.posY, 'diamondR');
 							//drosa.body.gravity.y = 30;
 							//drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="DiamondAzul"){
-							var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
+							var dazul = diamante.create(procesoAux.posX,procesoAux.posY, 'diamond');
 							//dazul.body.gravity.y = 30;
 							//dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="Dverde"){
-							var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
+							var dverde = diamanteG.create(procesoAux.posX,procesoAux.posY, 'diamondG');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="PoscionAzul"){
+							alert("posA")
+							var psazul = posA.create(procesoAux.posX,procesoAux.posY, 'posBlue');
 							//dverde.body.gravity.y = 30;
 							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
@@ -258,9 +264,7 @@ function correrProcesador(recursos){
 				//Buscar y liberar el recurso
 
 					if(procesoAux.nombre=="EstrellaAzul"){
-						randomx=game.world.randomX;
-						randomy=game.world.randomY;
-						var starAzul = stars.create(randomx,randomy,'starA');
+						var starAzul = stars.create(procesoAux.posX,procesoAux.posY,'starA');
 
 
 
@@ -270,44 +274,50 @@ function correrProcesador(recursos){
 
 							}
 					if(procesoAux.nombre=="EstrellaRoja"){
-						var starRoja = starsRojas.create(game.world.randomX, game.world.randomY,'starR');
+						var starRoja = starsRojas.create(procesoAux.posX,procesoAux.posY,'starR');
 						//  Let gravity do its thing
 						//	starRoja.body.gravity.y = 30;
 							//  This just gives each star a slightly random bounce value
 							//starRoja.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="EstrellaVerde"){
-						var starVerde = starsVerdes.create(game.world.randomX, game.world.randomY,'starG');
+						var starVerde = starsVerdes.create(procesoAux.posX,procesoAux.posY,'starG');
 							//starVerde.body.gravity.y = 30;
 							//starVerde.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="BolaAzul"){
-						var bazul = ballB.create(game.world.randomX, game.world.randomY, 'blueball');
+						var bazul = ballB.create(procesoAux.posX,procesoAux.posY, 'blueball');
 						//bazul.body.gravity.y = 30;
 						//bazul.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="BolaVerde"){
-						var bverde = ballG.create(game.world.randomX, game.world.randomY, 'greenball');
+						var bverde = ballG.create(procesoAux.posX,procesoAux.posY, 'greenball');
 						//bverde.body.gravity.y = 30;
 						//bverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="BolaRoja"){
-						var brosa = ballR.create(game.world.randomX, game.world.randomY, 'redball');
+						var brosa = ballR.create(procesoAux.posX,procesoAux.posY, 'redball');
 						//brosa.body.gravity.y = 30;
 						//brosa.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="DiamondRojo"){
-						var drosa = diamanteR.create(game.world.randomX, game.world.randomY, 'diamondR');
+						var drosa = diamanteR.create(procesoAux.posX,procesoAux.posY, 'diamondR');
 						//drosa.body.gravity.y = 30;
 						//drosa.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="DiamondAzul"){
-						var dazul = diamante.create(game.world.randomX, game.world.randomY, 'diamond');
+						var dazul = diamante.create(procesoAux.posX,procesoAux.posY, 'diamond');
 						//dazul.body.gravity.y = 30;
 						//dazul.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="Dverde"){
-						var dverde = diamanteG.create(game.world.randomX, game.world.randomY, 'diamondG');
+						var dverde = diamanteG.create(procesoAux.posX,procesoAux.posY, 'diamondG');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="PoscionAzul"){
+						alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var psazul = posA.create(procesoAux.posX,procesoAux.posY, 'posBlue');
 						//dverde.body.gravity.y = 30;
 						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
