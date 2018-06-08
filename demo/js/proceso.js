@@ -1,5 +1,5 @@
 //Funcion para recibir los valores del nodo proceso
-function nodoProceso(idProceso, nomProceso, tiempoVidaProceso, recurso, priority){
+function nodoProceso(idProceso, nomProceso, tiempoVidaProceso, recurso, priority, posiX, posiY){
 	this.id = idProceso;
 	this.nombre = nomProceso;
 	this.tiempo = tiempoVidaProceso;
@@ -8,6 +8,8 @@ function nodoProceso(idProceso, nomProceso, tiempoVidaProceso, recurso, priority
 	this.recurso = recurso;
 	this.t = tiempoVidaProceso;
 	this.prioridad = priority;
+	this.posX = posiX;
+	this.posY = posiY;
 }
 
 //Variables de cada procesador
@@ -51,14 +53,17 @@ $(document).ready(function(){
 });*/
 
 
-function CreacionProcesos(nProcesador, noProceso,recu) {
+function CreacionProcesos(nProcesador, noProceso,recu,prio ,poX, poY) {
 	var numProcesador= nProcesador;
 	var nomProceso=noProceso;
 	var tiempoProceso= numAleatorio();
 	var recurso= recu;
+	var posicionX = poX;
+	var posicionY = poY;
+	var valPrioridad = prio;
 
 	if (numProcesador == "1") {
-		var proceso = new nodoProceso(contador1, nomProceso, tiempoProceso, recurso, valPrioridad);
+		var proceso = new nodoProceso(contador1, nomProceso, tiempoProceso, recurso, valPrioridad, posicionX, posicionY);
 		procesador1.CrearProceso(proceso);
 		contador1++;
 		setTimeout(function(){
@@ -70,7 +75,7 @@ function CreacionProcesos(nProcesador, noProceso,recu) {
 
 	} else{
 		if (numProcesador == "2") {
-			var proceso = new nodoProceso(contador2, nomProceso, tiempoProceso, recurso);
+			var proceso = new nodoProceso(contador2, nomProceso, tiempoProceso, recurso, valPrioridad, posicionX, posicionY);
 			procesador2.CrearProceso(proceso);
 			contador2++;
 			setTimeout(function(){
@@ -80,7 +85,7 @@ function CreacionProcesos(nProcesador, noProceso,recu) {
 		}, 1000);
 			//$("#listos2").html(dibujarCola(procesador2.listos));
 		}else{
-			var proceso = new nodoProceso(contador3, nomProceso, tiempoProceso, recurso);
+			var proceso = new nodoProceso(contador3, nomProceso, tiempoProceso, recurso, valPrioridad, posicionX, posicionY);
 			procesador3.CrearProceso(proceso);
 			contador3++;
 			setTimeout(function(){

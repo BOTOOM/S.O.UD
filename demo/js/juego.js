@@ -137,7 +137,7 @@ function create() {
     player2.animations.add('right', [5, 6, 7, 8], 10, true);
 	player3.animations.add('left', [0, 1, 2], 10, true);
     player3.animations.add('right', [4, 5, 6], 10, true);
-	
+
 
     //  Finally some stars to collect
     stars = game.add.group();
@@ -230,55 +230,66 @@ function create() {
                 choiseLabel.text = 'tu elegiste: ' + choisemap[choise];
 				if(choisemap[choise]=='Erosa'){
 					console.log("estrellaroja");
-					CreacionProcesos("2","EstrellaRoja","PolvoEstelar");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("2","EstrellaRoja","PolvoEstelar","1",randomx,randomy);
 
 				}
 				if(choisemap[choise]=='Everde'){
-					CreacionProcesos("3","EstrellaVerde","PolvoEstelar");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("3","EstrellaVerde","PolvoEstelar","1",randomx,randomy);
 				}
 				if(choisemap[choise]=='Eazul'){
-
-					CreacionProcesos("1","EstrellaAzul","PolvoEstelar");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("1","EstrellaAzul","PolvoEstelar","1",randomx,randomy);
 
 				}
 				if(choisemap[choise]=='Bazul'){
-
-					CreacionProcesos("1","BolaAzul","FactoryBall");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("1","BolaAzul","FactoryBall","1",randomx,randomy);
 
 				}
 
 				if(choisemap[choise]=='Bverde'){
-
-					CreacionProcesos("3","BolaVerde","FactoryBall");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("3","BolaVerde","FactoryBall","1",randomx,randomy);
 						//  Create a star inside of the 'stars' group
 
 
 				}
 				if(choisemap[choise]=='Brosa'){
-
-					CreacionProcesos("2","BolaRoja","FactoryBall");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("2","BolaRoja","FactoryBall","1",randomx,randomy);
 						//  Create a star inside of the 'stars' group
 
 
 				}
 
 				if(choisemap[choise]=='Drosa'){
-
-				CreacionProcesos("2","DiamondRojo","MinnerDiamond");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+				CreacionProcesos("2","DiamondRojo","MinnerDiamond","1",randomx,randomy);
 
 						//  Create a star inside of the 'stars' group
 
 				}
 
 				if(choisemap[choise]=='Dazul'){
-
-					CreacionProcesos("1","DiamondAzul","MinnerDiamond");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("1","DiamondAzul","MinnerDiamond","1",randomx,randomy);
 						//  Create a star inside of the 'stars'
 
 				}
 				if(choisemap[choise]=='Dverde'){
-
-					CreacionProcesos("3","DiamondVerde","MinnerDiamond");
+					randomx=game.world.randomX;
+					randomy=game.world.randomY;
+					CreacionProcesos("3","DiamondVerde","MinnerDiamond","1",randomx,randomy);
 						//  Create a star inside of the 'stars' group
 
 
