@@ -167,8 +167,55 @@ function correrProcesador(recursos){
 							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
 						if(procesoAux.nombre=="PoscionAzul"){
-							alert("posA")
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
 							var psazul = posA.create(procesoAux.posX,procesoAux.posY, 'posBlue');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="PoscionRoja"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var psroja = posR.create(procesoAux.posX,procesoAux.posY, 'posRed');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="PoscionVerde"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var psverde = posG.create(procesoAux.posX,procesoAux.posY, 'posGreen');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="VelaAzul"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var vlazul = velA.create(procesoAux.posX,procesoAux.posY, 'velBlue');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}if(procesoAux.nombre=="VelaRoja"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var vlrooja = velR.create(procesoAux.posX,procesoAux.posY, 'velRed');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="VelaVerde"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var vlverde = velG.create(procesoAux.posX,procesoAux.posY, 'velGreen');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="PolvoAzul"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var plazul = polA.create(procesoAux.posX,procesoAux.posY, 'polBlue');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="PolvoRojo"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var plrojo = polG.create(procesoAux.posX,procesoAux.posY, 'polRed');
+							//dverde.body.gravity.y = 30;
+							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+						}
+						if(procesoAux.nombre=="PolvoVerde"){
+						//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+							var plverde = polR.create(procesoAux.posX,procesoAux.posY, 'polGreen');
 							//dverde.body.gravity.y = 30;
 							//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 						}
@@ -316,11 +363,59 @@ function correrProcesador(recursos){
 						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
 					if(procesoAux.nombre=="PoscionAzul"){
-						alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
 						var psazul = posA.create(procesoAux.posX,procesoAux.posY, 'posBlue');
 						//dverde.body.gravity.y = 30;
 						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
 					}
+					if(procesoAux.nombre=="PoscionRoja"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var psroja = posR.create(procesoAux.posX,procesoAux.posY, 'posRed');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="PoscionVerde"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var psverde = posG.create(procesoAux.posX,procesoAux.posY, 'posGreen');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="VelaAzul"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var vlazul = velA.create(procesoAux.posX,procesoAux.posY, 'velBlue');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}if(procesoAux.nombre=="VelaRoja"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var vlrooja = velR.create(procesoAux.posX,procesoAux.posY, 'velRed');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="VelaVerde"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var vlverde = velG.create(procesoAux.posX,procesoAux.posY, 'velGreen');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="PolvoAzul"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var plazul = polA.create(procesoAux.posX,procesoAux.posY, 'polBlue');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="PolvoRojo"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var plrojo = polG.create(procesoAux.posX,procesoAux.posY, 'polRed');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+					if(procesoAux.nombre=="PolvoVerde"){
+					//	alert("posA,"+procesoAux.posX+","+procesoAux.posY)
+						var plverde = polR.create(procesoAux.posX,procesoAux.posY, 'polGreen');
+						//dverde.body.gravity.y = 30;
+						//dverde.body.bounce.y = 0.7 + Math.random() * 0.2;
+					}
+
 
 
 					//Buscar el recurso y liberarlo

@@ -156,32 +156,56 @@ function CrearPosciones(tipo){
 	}
 	else if(tipo=="2"){
 		//alert("2");
+		randomx=game.world.randomX;
+		randomy=game.world.randomY;
+		CreacionProcesos("2","PoscionRoja","ALquimia","2",randomx,randomy);
 	}
 	else{
 	//	alert("3");
+	randomx=game.world.randomX;
+	randomy=game.world.randomY;
+	CreacionProcesos("3","PoscionVerde","ALquimia","2",randomx,randomy);
 	}
 }
 
 function CrearVelas(tipo) {
 	if(tipo=="1"){
 		//alert("1");
+		randomx=game.world.randomX;
+		randomy=game.world.randomY;
+		CreacionProcesos("1","VelaAzul","Cera","2",randomx,randomy);
 	}
 	else if(tipo=="2"){
 		//alert("2");
+		randomx=game.world.randomX;
+		randomy=game.world.randomY;
+		CreacionProcesos("2","VelaRoja","Cera","2",randomx,randomy);
 	}
 	else{
 		//alert("3");
+		randomx=game.world.randomX;
+		randomy=game.world.randomY;
+		CreacionProcesos("3","VelaVerde","Cera","2",randomx,randomy);
 	}
 }
 
 function CearPolvo(tipo) {
 	if(tipo=="1"){
 		//alert("1");
+		randomx=game.world.randomX;
+		randomy=game.world.randomY;
+		CreacionProcesos("1","PolvoAzul","Magic","3",randomx,randomy);
 	}
 	else if(tipo=="2"){
 	//	alert("2");
+	randomx=game.world.randomX;
+	randomy=game.world.randomY;
+	CreacionProcesos("2","PolvoRojo","Magic","3",randomx,randomy);
 	}
 	else{
 //		alert("3");
+randomx=game.world.randomX;
+randomy=game.world.randomY;
+CreacionProcesos("3","PolvoVerde","Magic","3",randomx,randomy);
 	}
 }
